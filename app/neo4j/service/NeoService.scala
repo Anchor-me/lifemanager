@@ -16,13 +16,13 @@ object NeoService {
 
 
   def add(goal: Goal): Unit = {
-    Cypher(
+    Cypher (
     s"""
       |CREATE (goal:Goal {
-      |id: ${goal.id.id},
-      |themeId: ${goal.themeId.id},
-      |summary: ${goal.summary},
-      |description: ${goal.description},
+      |id: "${goal.id.id}",
+      |themeId: "${goal.themeId.id}",
+      |summary: "${goal.summary}",
+      |description: "${goal.description}",
       |level: ${goal.level},
       |priority: ${goal.priority}
       |})
@@ -30,10 +30,19 @@ object NeoService {
     )
   }
 
-  def find(id: String): Option[Goal] = {
-    Cypher(
+  def connect(id1: String, id2: String): Unit = {
+    Cypher (
     s"""
-      |MATCH (goal {id: ${id}}) return goal
+      |MATCH (a {id: "${id1}"}), (b {id: "${id2}"})
+      |CREATE (a)-[:CONNECTED_TO]->(b)
+    """.stripMargin
+    )
+  }
+
+  def find(id: String): Option[Goal] = {
+    Cypher (
+    s"""
+      |MATCH (goal {id: "${id}"}) return goal
     """.stripMargin
     )().headOption.map {
       case CypherRow(name: String, node: NeoNode) => node.asGoal
@@ -41,6 +50,10 @@ object NeoService {
   }
 
   def delete(id: String): Unit = {
-
+    Cypher (
+    s"""
+      |MATCH (goal {id: "${id}"}) delete goal
+    """.stripMargin
+    )
   }
 }
