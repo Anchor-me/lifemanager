@@ -1,99 +1,164 @@
-<html>
+<html lang="en">
 <head>
-    <title>Hello Play Framework - Activator Template</title>
+    <title>Play Scala Tutorial</title>
 </head>
 <body>
-<div>
-    <p>You've just created a simple Play Framework application! Now lets explore the code and make some changes.</p>
 
-    <h2> View the App</h2>
-
-    <p>
-        Once the application has been compiled and the server started, your application can be accessed at: <a href="http://localhost:9000" target="_blank">http://localhost:9000</a><br/>
-        Check in <a href="#run" class="shortcut">Run</a> to see the server status.<br/>
-        When you make an HTTP request to that URL, the Play server figures out what code to execute which will handle the request and return a response.  In this application the request handler for requests to the root URL (e.g. "/") are handled by a Java Controller.  You can use Java and Scala to create your controllers.<br/>
-        Controllers asynchronously return HTTP responses of any content type (i.e. HTML, JSON, binary).
-    </p>
-</div>
 <div>
-    <h2>UNDER CONSTRUCTION</h2>
-</div>
-<!--
-<div>
-    <h2> Code Overview</h2>
-
-    <p>A Play application has very few required files.  This example tries to illustrate a number of key concepts in Play so it has a handful of files to explain.  The <a href="#code/app" class="shortcut">app</a> directory contains the application's source code, including Java, Scala, server-side templates, and server-side compiled assets for the browser (e.g. JavaScript, CoffeeScript, LESS).  The <a href="#code/conf" class="shortcut">conf</a> directory contains the <a href="#code/conf/application.conf" class="shortcut">application.conf</a> config file and the <a href="#code/conf/routes" class="shortcut">routes</a> file</a>.  The <a href="#code/project" class="shortcut">project</a> directory contains the SBT build information for the app.  The default place for static assets (e.g. images, HTML, CSS, JavaScript) is the <a href="#code/public" class="shortcut">public</a> directory.  Unit, functional, and integration tests (Java and Scala) go in the <a href="#code/test" class="shortcut">test</a> directory.</p>
-</div>
-<div>
-    <h2> HTTP Routing</h2>
+    <h2>Welcome to Play 2.4.8</h2>
 
     <p>
-        The <a href="#code/conf/routes" class="shortcut">routes</a> file contains mappings between HTTP request verbs &amp; paths and the code that controller method that handles the requests.  Route paths can be parametrized to support RESTful style URLs.  The following mapping will handle HTTP GET requests to "/" using the <strong>controllers.Application.index</strong> method:
-        <pre><code>GET   /    controllers.Application.index</code></pre>
-        You can try out the routing by first making a request to an unmatched route, like: <a href="http://localhost:9000/foo" target="_blank">http://localhost:9000/foo</a><br/>
-        This should produce an error because there isn't a route that matches the request.
-        Then edit the <a href="#code/conf/routes" class="shortcut">routes</a> to include a new route:
-        <pre><code>GET   /foo    controllers.Application.index</code></pre>
-        Now retry the request and you should see the default index page.<br/>
-        By default the routes are compiled by Play so that they can be used in a type-safe way.  This prevents issues caused by incorrect URL usages.
+        <em>Congratulations, you’ve just created a new Play application!</em>
+    </p>
+    <p>
+        <a href="http://www.playframework.com/">Play Framework</a> makes it easy to build web applications with Java &amp; Scala. Play is based on a lightweight, stateless, web-friendly architecture. Built on <a href="http://akka.io">Akka</a>, Play provides predictable and minimal resource consumption for highly-scalable applications.
+    </p>
+    <p>
+        This tutorial introduces you to the essentials of your new Play application.
     </p>
 </div>
+
 <div>
-    <h2> Controllers</h2>
+    <h2>Run Your Application</h2>
 
     <p>
-        HTTP GET requests to <a href="http://localhost:9000/" target="_blank">http://localhost:9000/</a> are handled by the index method defined in the <a href="#code/app/controllers/Application.java" class="shortcut">Application.java</a> file.  This static method returns a <strong>Result</strong> which in this case consists of a server-side rendered template and an HTTP 200 response which is represented by the <strong>ok</strong> method call.  You can also use non-static methods along with Dependency Injection frameworks like Spring, Guice, and CDI.<br/> 
-        You can change the "Hello Play Framework" string in <a href="#code/app/controllers/Application.java" class="shortcut">Application.java</a> a different value, like "Hello from Play", then save the file and reload <a href="http://localhost:9000/" target="_blank">the index page</a> in your browser.  Play will automatically recompile the controller and you should immediately see your changes.<br/>
-        If your changes result in a compile error you will see the error in your browser (after a refresh) and in the <a href="#compile" class="shortcut">Compile Plugin</a>.  Try it by removing one of the double-quotes in the <strong>index</strong> method's string, save the file, and reload the index page.  Fix the error before you continue.<br/>
+        Before we go any further, let's run the application.
     </p>
+    <ol>
+        <li>Go to the <a href="#run" class="shortcut">Run</a> page.</li>
+        <li>Click <em>Run</em> to start the application (if needed).</li>
+        <li>View the running application at <a href="http://localhost:9000">http://localhost:9000</a>.</li>
+    </ol>
 </div>
+
 <div>
-    <h2> Templates</h2>
+    <h2>Actions, Controllers and Results</h2>
 
     <p>
-        The <strong>Application.index</strong> method uses a template which is compiled by Play into a function.  The source is in the <a href="#code/app/views/index.scala.html" class="shortcut">index.scala.html</a> file and is available by calling the <strong>views.html.index.render</strong> function.  This template takes a parameter of a <strong>String</strong> so the compiled function also takes a <strong>String</strong> parameter.  The default templating language in Play is Scala, but a number of other templating languages (like Java, Groovy, and Dust) can also be plugged in.<br/>
-        The <a href="#code/app/views/index.scala.html" class="shortcut">index template</a> uses the <a href="#code/app/views/main.scala.html" class="shortcut">main template</a> by calling the <strong>main</strong> function with the required parameters.<br/>
-        Notice that the templates do not use hard-coded URLs and instead use Play's reverse routing, like:
-        <pre><code>@routes.Assets.at("images/favicon.png")</code></pre>
-        This provides a type-safe way to specify URLs in an application.  If the URL to a file changes, then automatically, the new value will be used throughout all of the URL references.  You can use the reverse router anywhere in your code, like redirects in controllers.<br/>
-        Like controllers (and all source code in Play) you can make changes to templates which triggers a recompile.  Then simply refresh the page to see the changes.  Try it out by making a change to the <a href="#code/app/views/index.scala.html" class="shortcut">index template</a>, saving the file, and then refreshing the <a href="http://localhost:9000/" target="_blank">index page</a> in your browser.
+        In Play, web requests are handled by <code>Action</code>s.
     </p>
+    <p>
+        <code>Action</code>s process each request, perform any work that's needed, and then return a <code>Result</code>. <code>Action</code>s are generated by <code>Controller</code>s.
+    </p>
+    <p>
+        This application defines a <code>Controller</code> in <a href="#code/app/controllers/Application.scala" class="shortcut">app/controllers/Application.scala</a>. <code>Application</code>'s <code>index</code> method creates an <code>Action</code> which returns a <code>Result</code> of <code>Ok</code>.
+    </p>
+    <p>
+        <a href="http://www.playframework.com/documentation/2.4.x/ScalaActions">Learn about Actions, Controllers and Results</a>
+    <p>
 </div>
+
 <div>
-    <h2> Static Assets</h2>
+    <h2>HTTP Routing</h2>
 
     <p>
-        This application has a route to handle loading static assets from the <a href="#code/public" class="shortcut">public</a> directory:
-        <pre><code>GET /assets/*file controllers.Assets.at(path="/public", file)</code></pre>
-        A request to <a href="http://localhost:9000/assets/images/favicon.png" target="_blank">http://localhost:9000/assets/images/favicon.png</a> will use this route to find the <a href="#code/public/images/favicon.png" class="shortcut">favicon.png</a> file in the <strong>public/images</strong> directory.<br/>
-        You can put any static assets into the public directory and have them accessible in this way.
+        Play routes incoming HTTP requests to their <code>Action</code>s. The mappings between requests and <code>Action</code>s are defined in <a href="#code/conf/routes" class="shortcut">conf/routes</a>.
     </p>
+    <p>
+        <a href="http://www.playframework.com/documentation/2.4.x/ScalaRouting">Learn about HTTP Routing</a>
+    <p>
 </div>
+
 <div>
-    <h2> Test the App</h2>
+    <h2>Twirl Templates</h2>
 
     <p>
-        This application includes a number of tests which are automatically run after each successful compile.  You can see the test results in the <a href="#test" class="shortcut">Test plugin</a>.  Due to changes that you may have made to your application source code, some of the tests might now be failing.  The source for the tests is located in the <a href="#code/test" class="shortcut">test</a> directory.  The <a href="#code/test/ApplicationTest.java" class="shortcut">test/ApplicationTest.java</a> Java class contains a number of unit and functional tests for the <strong>Application</strong>.  The <a href="#code/test/IntegrationTest.java" class="shortcut">IntegrationTest.java</a> file contains an test which uses Solenium to test the actual UI in a browser.  The default testing framework for Java in Play is JUnit, but you can plug any testing framework in.<br/>
-        If you modify a test and save the changes, then the tests will automatically be re-run.
+        This application renders HTML using Twirl templates.
     </p>
+    <p>
+        The templates are defined in the <a href="#code/app/views" class="shortcut">app/views</a> directory. Each Twirl template is compiled into a Scala object which can be called from Java or Scala code.
+    </p>
+    <p>
+        The <code>views.html.index(...)</code> code within <a href="#code/app/controllers/Application.scala" class="shortcut">Application.scala</a> calls the <a href="#code/app/views" class="shortcut">app/views/index.scala.html</a> template.
+    </p>
+    <p>
+        Twirl ships with Play by default but you can use other view technologies too. For example, you could use Handlebars instead of Twirl.
+    </p>
+    <p>
+        <a href="http://www.playframework.com/documentation/2.4.x/ScalaTemplates">Learn about Twirl Templates</a>
+    <p>
 </div>
+
 <div>
-    <h2> SBT Build</h2>
+    <h2>Static Assets</h2>
 
     <p>
-        SBT is the build system underneath Play applications.  It is responsible for resolving dependencies, compiling the project, running the tests, etc.  The primary build definition file is the <a href="#code/project/Build.scala" class="shortcut">Build.scala</a> file.  In that file you will see a comma-seperated list of dependencies which can be modified to suit your needs.  Play includes a number of libraries which can selectively be turned on/off.  For instance if you want to use JPA with Play, uncomment the <strong>javaJpa</strong> dependency.  You can also add your own dependencies in the SBT form:
-        <pre><code>"group" % "artifact" % "version"</code></pre>
+        Your application automatically serves static resources such as JavaScript, CSS and images.
     </p>
+    <p>
+        Normal assets live in the <a href="#code/public" class="shortcut">public</a> folder.
+    </p>
+    <p>
+        Assets that need compilation, such as <a href="http://coffeescript.org/">CoffeeScript</a> and <a href="http://lesscss.org/">LESS</a> files, go in the <a href="#code/app/assets" class="shortcut">app/assets</a> folder. These assets have extra processing applied to them.
+    </p>
+    <p>
+        Assets are served by Play's <code>Assets</code> controller. The <code>Assets</code> controller is configured in the <a href="#code/conf/routes" class="shortcut">conf/routes</a> file.
+    </p>
+    <p>
+        <a href="http://www.playframework.com/documentation/2.4.x/Assets">Learn about Working with Assets</a>
+    <p>
 </div>
--->
+
 <div>
-    <h2> Further Learning</h2>
+    <h2>Build System</h2>
 
     <p>
-        The <a href="http://www.playframework.com/documentation" target="_blank">Play Documentation</a> contains much more exhaustive details and also covers a number of other topics which haven't been addressed in this tutorial.<br/>
-        <a href="http://stackoverflow.com" target="_blank">StackOverflow</a> is a great place ask questions about Play.<br/>
-        <a href="http://groups.google.com/group/play-framework" target="_blank">The play-framework</a> Google Group is a great place to discuss Play.<br/>
+        Your Play application is built with <a href="http://www.scala-sbt.org/">sbt</a>.
+    </p>
+    <p>
+        Build configuration is defined in the <a href="#code/build.sbt" class="shortcut">build.sbt</a> file. You can edit this file to add new project dependencies or to change compilation settings.
+    </p>
+    <p>
+        Plugins extend sbt with new behavior. You can set up sbt plugins in the <a href="#code/project/plugins.sbt" class="shortcut">project/plugins.sbt</a> file. The Play sbt plugin is configured in this file. There are also separate plugins to compile assets, such as CoffeeScript and LESS.
+    </p>
+    <p>
+        <a href="http://www.playframework.com/documentation/2.4.x/Build">Learn about the Build System</a>
+    <p>
+</div>
+
+<div>
+    <h2>Runtime Configuration</h2>
+
+    <p>
+        You can change your application's runtime behavior by editing <a href="#code/conf/application.conf" class="shortcut">conf/application.conf</a> file. There are lots of commented-out settings in there for you to use as a starting point.
+    </p>
+    <p>
+        Play uses the <a href="https://github.com/typesafehub/config#readme" target="_blank">Typesafe Config Library</a> to manage its configuration. Editing the <code>application.conf</code> file is just one of many ways that you can configure your application.
+    </p>
+    <p>
+        <a href="http://www.playframework.com/documentation/2.4.x/Configuration">Learn about Configuration</a>
+    <p>
+</div>
+
+<div>
+    <h2>Command Line</h2>
+
+    <p>
+        You're probably reading this tutorial right now from within <a href="https://typesafe.com/activator">Typesafe Activator</a>'s browser UI. However, if you prefer, you can build and run your application from the command line.
+    </p>
+    <pre>$ activator ~run</pre>
+    <p>
+        You can run tests from the command line too.
+    </p>
+    <pre>$ activator ~test</pre>
+    <p>
+        <a href="http://www.playframework.com/documentation/2.4.x/PlayConsole">Learn about the Play console</a>
     </p>
 </div>
+
+<div>
+    <h2>More Information</h2>
+
+    <p>
+        General information about Play is available from <a href="http://www.playframework.com">playframework.com</a>.
+    </p>
+    <p>
+        There is documentation <a href="%PLAY_DOCS_URL">available online</a>.
+    </p>
+    <p>
+        You can also ask questions on <a href="http://stackoverflow.com/questions/tagged/playframework">Stack Overflow</a>.
+    </p>
+</div>
+
 </body>
 </html>
