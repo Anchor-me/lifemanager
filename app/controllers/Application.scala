@@ -1,7 +1,6 @@
 package controllers
 
 import org.anormcypher.{Cypher, Neo4jREST}
-import play.api._
 import play.api.libs.ws.ning
 import play.api.mvc._
 
