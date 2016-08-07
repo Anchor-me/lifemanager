@@ -1,22 +1,21 @@
 package neo4j
 
 import com.anchor.model.{Goal, Id}
-import org.anormcypher.NeoNode
 
 /**
  * Created by mesfinmebrate on 15/07/2016.
  */
 package object service {
 
-  implicit class NeoNodeWrapper(node: NeoNode) {
+  implicit class RowWrapper(row: Map[String, Any]) {
     def asGoal: Goal = {
       Goal (
-        id = Id(node.props.get("id").asInstanceOf[String]),
-        themeId = Id(node.props.get("themeId").asInstanceOf[String]),
-        summary = node.props.get("summary").asInstanceOf[String],
-        description = node.props.get("description").asInstanceOf[String],
-        level = node.props.get("level").asInstanceOf[Int],
-        priority = node.props.get("priority").asInstanceOf[Boolean]
+        id = Id(row.get("id").get.asInstanceOf[String]),
+        themeId = Id(row.get("themeId").get.asInstanceOf[String]),
+        summary = row.get("summary").get.asInstanceOf[String],
+        description = row.get("description").get.asInstanceOf[String],
+        level = row.get("level").get.asInstanceOf[String].toInt,
+        priority = row.get("priority").get.asInstanceOf[Boolean]
       )
     }
   }

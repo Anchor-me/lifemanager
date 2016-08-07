@@ -2,6 +2,7 @@ package neo4j.service
 
 import org.anormcypher.Neo4jREST
 import play.api.Play
+import play.api.Play.current
 import play.api.libs.ws.WSClient
 
 /**

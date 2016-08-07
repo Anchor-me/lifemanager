@@ -1,7 +1,7 @@
 package neo4j.service
 
 import com.anchor.model.Goal
-import org.anormcypher.{NeoNode, CypherRow, Cypher}
+import org.anormcypher.{CypherResultRow, NeoNode, CypherRow, Cypher}
 import play.api.libs.ws.ning
 
 /**
@@ -45,7 +45,7 @@ object NeoService {
       |MATCH (goal {id: "${id}"}) return goal
     """.stripMargin
     )().headOption.map {
-      case CypherRow(name: String, node: NeoNode) => node.asGoal
+      case CypherRow(row: Map[String, Any]) => row.asGoal
     }
   }
 
