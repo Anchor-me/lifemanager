@@ -4,7 +4,14 @@
 
 # Home page
 GET     /                           controllers.Application.index
-GET     /neo4j/get/:id              controllers.Application.get(id)
+
+POST    /goals/add                   controllers.Application.add
+
+GET     /goals/get/:id              controllers.Application.get(id)
+
+#GET    /connect/:id1/:id2           controllers.Application.connect(id1, id2)
+
+#GET    /delete/:id                  controllers.Application.delete(id)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

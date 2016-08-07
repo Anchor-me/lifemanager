@@ -14,7 +14,7 @@ package object service {
         themeId = Id(row.get("themeId").get.asInstanceOf[String]),
         summary = row.get("summary").get.asInstanceOf[String],
         description = row.get("description").get.asInstanceOf[String],
-        level = row.get("level").get.asInstanceOf[String].toInt,
+        level = row.get("level").get.toString.toInt,
         priority = row.get("priority").get.asInstanceOf[Boolean]
       )
     }

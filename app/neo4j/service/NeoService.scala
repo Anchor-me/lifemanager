@@ -16,7 +16,7 @@ object NeoService {
 
 
   def add(goal: Goal): Unit = {
-    Cypher (
+    val result = Cypher (
     s"""
       |CREATE (goal:Goal {
       |id: "${goal.id.id}",
@@ -27,16 +27,18 @@ object NeoService {
       |priority: ${goal.priority}
       |})
     """.stripMargin
-    )
+    )()
+    println(result)
   }
 
   def connect(id1: String, id2: String): Unit = {
-    Cypher (
+    val result = Cypher (
     s"""
       |MATCH (a {id: "${id1}"}), (b {id: "${id2}"})
       |CREATE (a)-[:CONNECTED_TO]->(b)
     """.stripMargin
-    )
+    )()
+    println(result)
   }
 
   def find(id: String): Option[Goal] = {
