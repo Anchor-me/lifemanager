@@ -19,6 +19,11 @@ class Application extends Controller {
     Ok
   }
 
+  def connect(id1: String, id2: String) = Action {
+    NeoService.connect(id1, id2)
+    Ok
+  }
+
   def get(goalId: String) = Action {
     NeoService.find(goalId) match {
       case None => NotFound
