@@ -1,8 +1,10 @@
 package neo4j.service
 
-import com.anchor.model.Goal
-import org.anormcypher.{CypherResultRow, NeoNode, CypherRow, Cypher}
+import com.anchor.model.{Spoke, Theme, Goal}
+import com.anchor.cypher._
+import org.anormcypher.{CypherResultRow, CypherRow, Cypher}
 import play.api.libs.ws.ning
+import utils.Utils._
 
 /**
  * Created by mesfinmebrate on 15/07/2016.
@@ -15,37 +17,36 @@ object NeoService {
   implicit val executionContext = scala.concurrent.ExecutionContext.global
 
 
-  def add(goal: Goal): Unit = {
-    val result = Cypher (
+  def add(spoke: Spoke): Unit = {
+    Cypher (
     s"""
-      |CREATE (goal:Goal {
-      |id: "${goal.id.id}",
-      |themeId: "${goal.themeId.id}",
-      |summary: "${goal.summary}",
-      |description: "${goal.description}",
-      |level: ${goal.level},
-      |priority: ${goal.priority}
-      |})
+      |CREATE ${spoke.toCypher}
     """.stripMargin
     )()
-    println(result)
   }
 
-  def connect(id1: String, id2: String): Unit = {
-    val result = Cypher (
+  def connect(id1: String, relationship: String, id2: String): Unit = {
+    Cypher (
     s"""
       |MATCH (a {id: "${id1}"}), (b {id: "${id2}"})
-      |CREATE (a)-[:CONNECTED_TO]->(b)
+      |CREATE (a)-[:${formatRelationship(relationship)}]->(b)
     """.stripMargin
     )()
-    println(result)
+  }
+
+  def findGoal(id: String): Option[Goal] = {
+    find(id).map {
+      case CypherRow(row: Map[String, Any]) => row.asGoal
+    }
+
+//    find(id).map(_.asGoal)
   }
 
   def find(id: String): Option[Goal] = {
     Cypher (
     s"""
-      |MATCH (goal {id: "${id}"})
-      |RETURN goal
+      |MATCH (item {id: "${id}"})
+      |RETURN item
     """.stripMargin
     )().headOption.map {
       case CypherRow(row: Map[String, Any]) => row.asGoal
@@ -53,14 +54,22 @@ object NeoService {
   }
 
   def delete(id: String): Unit = {
+    deleteNodeRelationships(id)
+    deleteNode(id)
+  }
+
+  def deleteNode(id: String): Unit = {
     Cypher (
-    s"""
-      |MATCH (item {id: "${id}"})-[r]-(n) DELETE r
+      s"""
+         |MATCH (item {id: "${id}"}) DELETE item
     """.stripMargin
     )()
+  }
+
+  def deleteNodeRelationships(id: String): Unit = {
     Cypher (
-    s"""
-      |MATCH (item {id: "${id}"}) DELETE item
+      s"""
+         |MATCH (item {id: "${id}"})-[r]-(n) DELETE r
     """.stripMargin
     )()
   }

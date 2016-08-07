@@ -19,8 +19,8 @@ class Application extends Controller {
     Ok
   }
 
-  def connect(id1: String, id2: String) = Action {
-    NeoService.connect(id1, id2)
+  def connect(id1: String, relationship: String, id2: String) = Action {
+    NeoService.connect(id1, relationship, id2)
     Ok
   }
 
