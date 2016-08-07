@@ -44,7 +44,8 @@ object NeoService {
   def find(id: String): Option[Goal] = {
     Cypher (
     s"""
-      |MATCH (goal {id: "${id}"}) return goal
+      |MATCH (goal {id: "${id}"})
+      |RETURN goal
     """.stripMargin
     )().headOption.map {
       case CypherRow(row: Map[String, Any]) => row.asGoal
@@ -54,8 +55,13 @@ object NeoService {
   def delete(id: String): Unit = {
     Cypher (
     s"""
-      |MATCH (goal {id: "${id}"}) delete goal
+      |MATCH (item {id: "${id}"})-[r]-(n) DELETE r
     """.stripMargin
-    )
+    )()
+    Cypher (
+    s"""
+      |MATCH (item {id: "${id}"}) DELETE item
+    """.stripMargin
+    )()
   }
 }

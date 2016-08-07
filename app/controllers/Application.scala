@@ -30,4 +30,9 @@ class Application extends Controller {
       case Some(goal) => Ok(Json.toJson(goal) + "\n")
     }
   }
+
+  def delete(id: String) = Action {
+    NeoService.delete(id)
+    Ok
+  }
 }
