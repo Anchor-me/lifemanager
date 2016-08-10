@@ -5,9 +5,13 @@
 # Home page
 GET     /                                           controllers.Application.index
 
-POST    /goals/add                                  controllers.Application.add
+POST    /goals/add                                  controllers.Application.addGoal
 
-GET     /goals/get/:id                              controllers.Application.get(id)
+POST    /themes/add                                 controllers.Application.addTheme
+
+GET     /goals/get/:id                              controllers.Application.getGoal(id)
+
+GET     /themes/get/:id                              controllers.Application.getTheme(id)
 
 GET     /connect/:id1/:relationship/:id2            controllers.Application.connect(id1, relationship, id2)
 

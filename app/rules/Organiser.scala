@@ -1,6 +1,6 @@
 package rules
 
-import com.anchor.model.Goal
+import com.anchor.model.{Theme, Goal}
 import neo4j.service.NeoService
 
 /**
@@ -11,5 +11,9 @@ object Organiser {
   def add(goal: Goal): Unit = {
     NeoService.add(goal)
     NeoService.connect(goal.id.id, "has theme", goal.themeId.id)
+  }
+
+  def add(theme: Theme): Unit = {
+    NeoService.add(theme)
   }
 }

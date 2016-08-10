@@ -16,7 +16,6 @@ object NeoService {
 
   implicit val executionContext = scala.concurrent.ExecutionContext.global
 
-
   def add(spoke: Spoke): Unit = {
     Cypher (
     s"""
@@ -34,23 +33,19 @@ object NeoService {
     )()
   }
 
-  def findGoal(id: String): Option[Goal] = {
-    find(id).map {
-      case CypherRow(row: Map[String, Any]) => row.asGoal
-    }
+  def findGoal(id: String): Option[Goal] = find(id).asGoal
+  def findTheme(id: String): Option[Theme] = find(id).asTheme
 
-//    find(id).map(_.asGoal)
-  }
-
-  def find(id: String): Option[Goal] = {
+  def find(id: String): Option[CypherResultRow] = {
     Cypher (
     s"""
       |MATCH (item {id: "${id}"})
       |RETURN item
     """.stripMargin
-    )().headOption.map {
-      case CypherRow(row: Map[String, Any]) => row.asGoal
-    }
+    )().headOption
+//    )().headOption.map {
+//      case CypherRow(row: Map[String, Any]) => row.asGoal
+//    }
   }
 
   def delete(id: String): Unit = {
