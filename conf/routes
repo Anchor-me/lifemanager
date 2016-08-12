@@ -5,13 +5,11 @@
 # Home page
 GET     /                                           controllers.Application.index
 
-POST    /goals/add                                  controllers.Application.addGoal
+POST    /goals/add                                  controllers.Application.add(spokeName: String = "Goal")
+POST    /themes/add                                 controllers.Application.add(spokeName: String = "Theme")
 
-POST    /themes/add                                 controllers.Application.addTheme
-
-GET     /goals/get/:id                              controllers.Application.getGoal(id)
-
-GET     /themes/get/:id                              controllers.Application.getTheme(id)
+GET     /goals/get/:id                              controllers.Application.get(id, spokeName: String = "Goal")
+GET     /themes/get/:id                             controllers.Application.get(id, spokeName: String = "Theme")
 
 GET     /connect/:id1/:relationship/:id2            controllers.Application.connect(id1, relationship, id2)
 

@@ -8,9 +8,9 @@ import org.anormcypher.{CypherRow, CypherResultRow}
  */
 package object service {
 
-  implicit class RowWrapper(resultRow: Option[CypherResultRow]) {
-    def asGoal: Option[Goal] = {
-      resultRow.map {
+  implicit class RowWrapper(resultRow: CypherResultRow) {
+    def asGoal: Goal = {
+      resultRow match {
         case CypherRow(row: Map[String, Any]) => Goal(
           id = Id(row.get("id").get.asInstanceOf[String]),
           themeId = Id(row.get("themeId").get.asInstanceOf[String]),
@@ -22,8 +22,8 @@ package object service {
       }
     }
 
-    def asTheme: Option[Theme] = {
-      resultRow.map {
+    def asTheme: Theme = {
+      resultRow match {
         case CypherRow(row: Map[String, Any]) => Theme(
           id = Id(row.get("id").get.asInstanceOf[String]),
           yearId = Id(row.get("yearId").get.asInstanceOf[String]),

@@ -33,9 +33,6 @@ object NeoService {
     )()
   }
 
-  def findGoal(id: String): Option[Goal] = find(id).asGoal
-  def findTheme(id: String): Option[Theme] = find(id).asTheme
-
   def find(id: String): Option[CypherResultRow] = {
     Cypher (
     s"""
@@ -43,9 +40,6 @@ object NeoService {
       |RETURN item
     """.stripMargin
     )().headOption
-//    )().headOption.map {
-//      case CypherRow(row: Map[String, Any]) => row.asGoal
-//    }
   }
 
   def delete(id: String): Unit = {
