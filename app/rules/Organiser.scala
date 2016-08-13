@@ -1,7 +1,7 @@
 package rules
 
-import com.anchor.model.{Theme, Goal}
-import neo4j.service.NeoService
+import com.anchor.model.{Goal, Theme}
+import neo4j.NeoService
 
 /**
  * Created by mesfinmebrate on 15/07/2016.

@@ -1,4 +1,4 @@
-package neo4j.service
+package neo4j
 
 import org.anormcypher.Neo4jREST
 import play.api.Play

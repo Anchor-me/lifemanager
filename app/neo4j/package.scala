@@ -1,12 +1,10 @@
-package neo4j
-
 import com.anchor.model.{Theme, Goal, Id}
 import org.anormcypher.{CypherRow, CypherResultRow}
 
 /**
  * Created by mesfinmebrate on 15/07/2016.
  */
-package object service {
+package object neo4j {
 
   implicit class RowWrapper(resultRow: CypherResultRow) {
     def asGoal: Goal = {

@@ -1,4 +1,4 @@
-package neo4j.service
+package neo4j
 
 import com.anchor.model.{Spoke, Theme, Goal}
 import com.anchor.cypher._

@@ -1,11 +1,11 @@
 package controllers
 
-import com.anchor.model.{SpokeType, Spoke, Goal, Theme}
-import neo4j.service._
-import neo4j.service.NeoService
+import com.anchor.model.{Goal, SpokeType, Theme}
+import neo4j._
 import play.api.libs.json.{JsValue, Json}
 import com.anchor.json._
-import play.api.mvc.{AnyContent, Request, Action, Controller}
+import neo4j.NeoService
+import play.api.mvc.{Action, Controller}
 import rules.Organiser
 
 class Application extends Controller {
