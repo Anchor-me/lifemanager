@@ -1,5 +1,5 @@
-import com.anchor.model.{Theme, Goal, Id}
-import org.anormcypher.{CypherRow, CypherResultRow}
+import com.anchor.model._
+import org.anormcypher.{CypherResultRow, CypherRow}
 
 /**
  * Created by mesfinmebrate on 15/07/2016.
@@ -7,6 +7,19 @@ import org.anormcypher.{CypherRow, CypherResultRow}
 package object neo4j {
 
   implicit class RowWrapper(resultRow: CypherResultRow) {
+    def asBacklogItem: BacklogItem = {
+      resultRow match {
+        case CypherRow(row: Map[String, Any]) => BacklogItem(
+          id = Id(row.get("id").get.asInstanceOf[String]),
+          summary = row.get("summary").get.asInstanceOf[String],
+          description = row.get("description").get.asInstanceOf[String],
+          typeOf = BacklogItemType.withName(row.get("typeOf").get.asInstanceOf[String])
+        )
+      }
+    }
+
+
+
     def asGoal: Goal = {
       resultRow match {
         case CypherRow(row: Map[String, Any]) => Goal(
