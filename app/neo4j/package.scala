@@ -29,16 +29,28 @@ package object neo4j {
       }
     }
 
-    /*Goal (
-       id: Id,
-       themeId: Id,
-       summary: String,
-       description: String,
-       level: Int,
-       priority: Boolean,
-       status: GoalStatusType.Value,
-       graduation: GraduationType.Value
-     )*/
+    def asConcreteBlock: ConcreteBlock = {
+      resultRow match {
+        case CypherRow(row: Map[String, Any]) => ConcreteBlock(
+          start = row.get("start").asInstanceOf[Long],
+          finish = row.get("finish").asInstanceOf[Long],
+          task = row.get("task").map(item => Id(item.asInstanceOf[String]))
+        )
+      }
+    }
+
+    def asFinancialTracking: FinancialTracking = {
+      resultRow match {
+        case CypherRow(row: Map[String, Any]) => FinancialTracking(
+          id = Id(row.get("id").get.asInstanceOf[String]),
+          currentAmount = row.get("currentAmount").get.asInstanceOf[Double],
+          goalAmount = row.get("goalAmount").get.asInstanceOf[Double],
+          paidIn = row.get("paidIn").get.asInstanceOf[Double],
+          paidOut = row.get("paidOut").get.asInstanceOf[Double],
+          progress = FinancialProgressType.withName(row.get("progress").get.asInstanceOf[String])
+        )
+      }
+    }
 
     def asGoal: Goal = {
       resultRow match {
@@ -54,6 +66,44 @@ package object neo4j {
         )
       }
     }
+
+    def asHobby: Hobby = {
+      resultRow match {
+        case CypherRow(row: Map[String, Any]) => Hobby(
+          id = Id(row.get("id").get.asInstanceOf[String]),
+          summary = row.get("summary").get.asInstanceOf[String],
+          description = row.get("description").get.asInstanceOf[String],
+          typeOf = HobbyType.withName(row.get("typeOf").get.asInstanceOf[String]),
+          status = StatusType.withName(row.get("status").get.asInstanceOf[String])
+        )
+      }
+    }
+
+    def asLaserDonut: LaserDonut = {
+      resultRow match {
+        case CypherRow(row: Map[String, Any]) => LaserDonut(
+          id = Id(row.get("id").get.asInstanceOf[String]),
+          summary = row.get("summary").get.asInstanceOf[String],
+          description = row.get("description").get.asInstanceOf[String],
+          goalId = Id(row.get("goalId").get.asInstanceOf[String]),
+          status = StatusType.withName(row.get("status").get.asInstanceOf[String]),
+          milestone = row.get("milestone").get.asInstanceOf[String],
+          order = row.get("order").get.asInstanceOf[Int],
+          typeOf = DonutType.withName(row.get("typeOf").get.asInstanceOf[String])
+        )
+      }
+    }
+
+    /*LaserDonut (
+       id: Id,
+       summary: String,
+       description: String,
+       goalId: Id,
+       status: StatusType.Value,
+       milestone: String,
+       order: Int,
+       typeOf: DonutType.Value
+    )*/
 
     def asTheme: Theme = {
       resultRow match {
