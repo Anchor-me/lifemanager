@@ -11,6 +11,7 @@ package object neo4j {
       resultRow match {
         case CypherRow(row: Map[String, Any]) => BacklogItem(
           id = Id(row.get("id").get.asInstanceOf[String]),
+          yearId = Id(row.get("yearId").get.asInstanceOf[String]),
           summary = row.get("summary").get.asInstanceOf[String],
           description = row.get("description").get.asInstanceOf[String],
           typeOf = BacklogItemType.withName(row.get("typeOf").get.asInstanceOf[String])
@@ -21,6 +22,7 @@ package object neo4j {
     def asBufferBlock: BufferBlock = {
       resultRow match {
         case CypherRow(row: Map[String, Any]) => BufferBlock(
+          id = Id(row.get("id").get.asInstanceOf[String]),
           start = row.get("start").get.asInstanceOf[Long],
           finish = row.get("finish").get.asInstanceOf[Long],
           firstTask = row.get("firstTask").map(item => Id(item.asInstanceOf[String])),
@@ -32,6 +34,7 @@ package object neo4j {
     def asConcreteBlock: ConcreteBlock = {
       resultRow match {
         case CypherRow(row: Map[String, Any]) => ConcreteBlock(
+          id = Id(row.get("id").get.asInstanceOf[String]),
           start = row.get("start").asInstanceOf[Long],
           finish = row.get("finish").asInstanceOf[Long],
           task = row.get("task").map(item => Id(item.asInstanceOf[String]))
@@ -43,6 +46,7 @@ package object neo4j {
       resultRow match {
         case CypherRow(row: Map[String, Any]) => FinancialTracking(
           id = Id(row.get("id").get.asInstanceOf[String]),
+          yearId = Id(row.get("yearId").get.asInstanceOf[String]),
           currentAmount = row.get("currentAmount").get.asInstanceOf[Double],
           goalAmount = row.get("goalAmount").get.asInstanceOf[Double],
           paidIn = row.get("paidIn").get.asInstanceOf[Double],
@@ -57,6 +61,7 @@ package object neo4j {
         case CypherRow(row: Map[String, Any]) => Goal(
           id = Id(row.get("id").get.asInstanceOf[String]),
           themeId = Id(row.get("themeId").get.asInstanceOf[String]),
+          backlogItems = row.get("backlogItems").get.asInstanceOf[Seq[String]].map(id => Id(id)),
           summary = row.get("summary").get.asInstanceOf[String],
           description = row.get("description").get.asInstanceOf[String],
           level = row.get("level").get.toString.toInt,
@@ -110,6 +115,8 @@ package object neo4j {
     def asReceipt: Receipt = {
       resultRow match {
         case CypherRow(row: Map[String, Any]) => Receipt(
+          id = Id(row.get("id").get.asInstanceOf[String]),
+          trackingId = Id(row.get("trackingId").get.asInstanceOf[String]),
           purchasedItem = row.get("purchasedItem").get.asInstanceOf[String],
           expenditure = row.get("expenditure").get.asInstanceOf[Double],
           nameOfEstablishment = row.get("nameOfEstablishment").get.asInstanceOf[String]
@@ -166,6 +173,15 @@ package object neo4j {
       }
     }
 
+//    def asTimeTable: TimeTable = {
+//      resultRow match {
+//        case CypherRow(row: Map[String, Any]) => TimeTable(
+//          dayId = Id(row.get("dayId").get.asInstanceOf[String]),
+//          scheduledItems = row.get("scheduledItems").get.asInstanceOf[Seq[String]].map(id => Id(id))
+//        )
+//      }
+//    }
+
     def asToDo: ToDo = {
       resultRow match {
         case CypherRow(row: Map[String, Any]) => ToDo(
@@ -195,6 +211,7 @@ package object neo4j {
       resultRow match {
         case CypherRow(row: Map[String, Any]) => Week(
           id = Id(row.get("id").get.asInstanceOf[String]),
+          yearId = Id(row.get("yearId").get.asInstanceOf[String]),
           startDate = row.get("startDate").get.asInstanceOf[Long],
           finishDate = row.get("finishDate").get.asInstanceOf[Long],
           weave = row.get("weave").map(item => Id(item.asInstanceOf[String])),
