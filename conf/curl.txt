@@ -1,0 +1,264 @@
+curl -XPOST "localhost:9999/goals/index"
+
+curl -XPOST localhost:9999/books/populate
+
+curl -XPOST localhost:9999/es/index
+
+curl -XPOST localhost/books/populate
+
+curl -XGET "localhost:9999/goals/3003"
+
+"id" : Id("1001"),
+    themeId = Id("2002"),
+    summary = "Create Anchor.me",
+    description = "Use all your knowledge and skills to create a life-management system",
+    level = 0,
+    priority = true
+
+
+{"identifier":"4321","name":"Arya"}
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id" : "0110" },
+  "themeId" : { "id" : "0220" },
+  "summary" : "Test JSON post",
+  "description" : "Make it work",
+  "level" : 0,
+  "priority" : true,
+  "status" : "NotComplete",
+  "graduation" : "None"
+}' http://localhost:9000/goal/add
+
+https://mvnrepository.com/artifact/com.typesafe.play/play-ws_2.11
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id" : "0220" },
+  "yearId" : { "id" : "YEAR_OF_RABBIT" },
+  "name" : "Adulthood"
+}' http://localhost:9000/theme/add
+
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id" : "0330" },
+  "themeId" : { "id" : "0440" },
+  "summary" : "Test JSON post",
+  "description" : "Make it work",
+  "level" : 0,
+  "priority" : true,
+  "status" : "Employed",
+  "graduation" : "Thread"
+}' http://localhost:9000/goal/add
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id" : "0440" },
+  "yearId" : { "id" : "YEAR_OF_PIG" },
+  "name" : "Career Capital"
+}' http://localhost:9000/theme/add
+
+
+CREATE (saturday:Saturday {
+id: "ID123",
+name: "Saturday",
+threads: ["TH1", "TH2", "TH3"]
+})
+
+
+/*WeekDay (
+  id: Id,
+  weekId: Id,
+  date: Long,
+  threads: Seq[Id],
+  weave: Option[Id],
+  portion: Option[Id],
+  financialTracking: Option[Id]
+)*/
+
+// ${concreteBlock.task.map(o => s", task: ${o.id}")}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+POST curls
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id" : "BL1" },
+  "yearId" : { "id" : "2016" },
+  "summary" : "Get your shit together",
+  "description" : "",
+  "typeOf" : "Item"
+}' http://localhost:9000/backlogitem/add
+
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id" : "BB1" },
+  "start" : 1472585712,
+  "finish" : 1472605712,
+  "firstTask" : { "id" : "PORTION1" },
+  "secondTask" : { "id" : "THREAD1" }
+}' http://localhost:9000/bufferblock/add
+
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id" : "BB1" },
+  "start" : 1472705712,
+  "finish" : 1472805712,
+  "task" : { "id" : "PORTION2" }
+}' http://localhost:9000/concreteblock/add
+
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id" : "FT1" },
+  "yearId" : { "id" : "2016" },
+  "currentAmount" : 2000,
+  "goalAmount" : 10000,
+  "paidIn" : 500,
+  "paidOut" : 3.69,
+  "progress" : "Frugal"
+}' http://localhost:9000/financialtracking/add
+
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id" : "GOAL1" },
+  "themeId" : { "id" : "THEME1" },
+  "backlogItems" : [{ "id" : "BL1" }, { "id" : "BL2" }, { "id" : "BL3" }]
+  "summary" : "Jira for PDRs",
+  "description" : "Make it work",
+  "level" : 0,
+  "priority" : true,
+  "status" : "Employed",
+  "graduation" : "Thread"
+}' http://localhost:9000/goal/add
+
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id" : "HOBBY1" },
+  "goalId" : { "id" : "GOAL2" },
+  "summary" : "Rekindle your artistic passion",
+  "description" : "",
+  "typeOf" : "Active",
+  "status" : "NotComplete"
+}' http://localhost:9000/hobby/add
+
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id" : "LD1" },
+  "goalId" : { "id" : "GOAL1" },
+  "summary" : "Ferris Wheel",
+  "description" : "",
+  "status" : "NotComplete",
+  "milestone" : "Assimilate it into my professional and daily life",
+  "order" : 1,
+  "typeOf" : "ProjectBased"
+}' http://localhost:9000/laserdonut/add
+
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id" : "PORTION1" },
+  "laserDonutId" : { "id" : "LD1" },
+  "summary" : "Replicate the Conceptual Map inside Neo4j, using the Abstract as a reference.",
+  "order" : 1,
+  "status" : "NotStarted"
+}' http://localhost:9000/portion/add
+
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id": "RECEIPT1" },
+  "trackingId" : { "id" : "FT1" },
+  "purchasedItem" : "Green Juice",
+  "expenditure" : 3.69,
+  "nameOfEstablishment" : "Pret a Manger"
+}' http://localhost:9000/receipt/add
+
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id" : "THEME1" },
+  "weekId" : { "id" : "2016-20" },
+  "date" : 1472585712,
+  "threads" : [ { "id" : "THREAD1" }, { "id" : "THREAD2" }, { "id" : "THREAD3" } ],
+  "portion" : { "id" : "PORTION1" },
+  "passiveHobby" : { "id" : "HOBBY2" },
+  "financialTracking" : { "id" : "FT1" }
+}' http://localhost:9000/saturday/add
+
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id" : "THEME1" },
+  "weekId" : { "id" : "2016-20" },
+  "date" : 1473585712,
+  "threads" : [ { "id" : "THREAD1" }, { "id" : "THREAD2" }, { "id" : "THREAD3" } ],
+  "activeHobby" : { "id" : "HOBBY1" },
+  "financialTracking" : { "id" : "FT1" }
+}' http://localhost:9000/sunday/add
+
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id" : "THEME1" },
+  "yearId" : { "id" : "2016" },
+  "name" : "Career Capital"
+}' http://localhost:9000/theme/add
+
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id" : "THREAD1" },
+  "summary" : "Jogging",
+  "description" : "",
+  "goalId" : { "id" : "GOAL2" },
+  "status" : "Complete"
+}' http://localhost:9000/thread/add
+
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id" : "TODO1" },
+  "portionId" : { "id" : "PORTION1" },
+  "description" : "Write curl POST commands",
+  "order" : 1,
+  "status" : "NotComplete"
+}' http://localhost:9000/todo/add
+
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id" : "WEAVE1" },
+  "summary" : "Configure the build server",
+  "description" : "",
+  "goalId" : { "id" : "GOAL1" },
+  "status" : "NotStarted",
+  "typeOf" : "PDR"
+}' http://localhost:9000/weave/add
+
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id" : "WEEK1" },
+  "yearId" : { "id" : "2016" },
+  "startDate" : 1472705712,
+  "finishDate" : 1482705712,
+  "weave" : { "id" : "WEAVE1" },
+  "laserDonut" : { "id" : "LD1" }
+}' http://localhost:9000/week/add
+
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id" : "MONDAY1" },
+  "weekId" : { "id" : "WEEK1" },
+  "date" : 1472705712,
+  "threads" : [ { "id" : "THREAD1" }, { "id" : "THREAD2" }, { "id" : "THREAD3" } ],
+  "weave" : { "id" : "WEAVE1" },
+  "portion" : { "id" : "PORTION1" },
+  "financialTracking" : { "id" : "FT1" }
+}' http://localhost:9000/weekday/add
+
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id" : "2016" },
+  "startDate" : 1472705712,
+  "finishDate" : 2482705712
+}' http://localhost:9000/year/add
