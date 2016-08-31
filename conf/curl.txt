@@ -95,7 +95,7 @@ curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST
   "yearId" : { "id" : "2016" },
   "summary" : "Get your shit together",
   "description" : "",
-  "typeOf" : "Item"
+  "typeOf" : "Issue"
 }' http://localhost:9000/backlogitem/add
 
 
@@ -130,7 +130,7 @@ curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST
 curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
   "id" : { "id" : "GOAL1" },
   "themeId" : { "id" : "THEME1" },
-  "backlogItems" : [{ "id" : "BL1" }, { "id" : "BL2" }, { "id" : "BL3" }]
+  "backlogItems" : [{ "id" : "BL1" }, { "id" : "BL2" }, { "id" : "BL3" }],
   "summary" : "Jira for PDRs",
   "description" : "Make it work",
   "level" : 0,
