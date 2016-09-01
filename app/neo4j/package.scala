@@ -214,6 +214,7 @@ package object neo4j {
           yearId = Id(row.get("yearId").get.asInstanceOf[String]),
           startDate = row.get("startDate").get.asInstanceOf[Long],
           finishDate = row.get("finishDate").get.asInstanceOf[Long],
+          threads = row.get("threads").asInstanceOf[Seq[String]].map(id => Id(id)),
           weave = row.get("weave").map(item => Id(item.asInstanceOf[String])),
           laserDonut = row.get("laserDonut").map(item => Id(item.asInstanceOf[String]))
         )
@@ -239,7 +240,8 @@ package object neo4j {
         case CypherRow(row: Map[String, Any]) => Year(
           id = Id(row.get("id").get.asInstanceOf[String]),
           startDate = row.get("startDate").get.asInstanceOf[Long],
-          finishDate = row.get("finishDate").get.asInstanceOf[Long]
+          finishDate = row.get("finishDate").get.asInstanceOf[Long],
+          threads = row.get("threads").asInstanceOf[Seq[String]].map(id => Id(id))
         )
       }
     }
