@@ -1,93 +1,3 @@
-curl -XPOST "localhost:9999/goals/index"
-
-curl -XPOST localhost:9999/books/populate
-
-curl -XPOST localhost:9999/es/index
-
-curl -XPOST localhost/books/populate
-
-curl -XGET "localhost:9999/goals/3003"
-
-"id" : Id("1001"),
-    themeId = Id("2002"),
-    summary = "Create Anchor.me",
-    description = "Use all your knowledge and skills to create a life-management system",
-    level = 0,
-    priority = true
-
-
-{"identifier":"4321","name":"Arya"}
-
-curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
-  "id" : { "id" : "0110" },
-  "themeId" : { "id" : "0220" },
-  "summary" : "Test JSON post",
-  "description" : "Make it work",
-  "level" : 0,
-  "priority" : true,
-  "status" : "NotComplete",
-  "graduation" : "None"
-}' http://localhost:9000/goal/add
-
-https://mvnrepository.com/artifact/com.typesafe.play/play-ws_2.11
-
-curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
-  "id" : { "id" : "0220" },
-  "yearId" : { "id" : "YEAR_OF_RABBIT" },
-  "name" : "Adulthood"
-}' http://localhost:9000/theme/add
-
-
-curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
-  "id" : { "id" : "0330" },
-  "themeId" : { "id" : "0440" },
-  "summary" : "Test JSON post",
-  "description" : "Make it work",
-  "level" : 0,
-  "priority" : true,
-  "status" : "Employed",
-  "graduation" : "Thread"
-}' http://localhost:9000/goal/add
-
-curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
-  "id" : { "id" : "0440" },
-  "yearId" : { "id" : "YEAR_OF_PIG" },
-  "name" : "Career Capital"
-}' http://localhost:9000/theme/add
-
-
-CREATE (saturday:Saturday {
-id: "ID123",
-name: "Saturday",
-threads: ["TH1", "TH2", "TH3"]
-})
-
-
-/*WeekDay (
-  id: Id,
-  weekId: Id,
-  date: Long,
-  threads: Seq[Id],
-  weave: Option[Id],
-  portion: Option[Id],
-  financialTracking: Option[Id]
-)*/
-
-// ${concreteBlock.task.map(o => s", task: ${o.id}")}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 POST curls
 
 curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
@@ -109,7 +19,7 @@ curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST
 
 
 curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
-  "id" : { "id" : "BB1" },
+  "id" : { "id" : "CB1" },
   "start" : 1472705712,
   "finish" : 1472805712,
   "task" : { "id" : "PORTION2" }
@@ -181,7 +91,7 @@ curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST
 
 
 curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
-  "id" : { "id" : "THEME1" },
+  "id" : { "id" : "SATURDAY1" },
   "weekId" : { "id" : "2016-20" },
   "date" : 1472585712,
   "threads" : [ { "id" : "THREAD1" }, { "id" : "THREAD2" }, { "id" : "THREAD3" } ],
@@ -192,7 +102,7 @@ curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST
 
 
 curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
-  "id" : { "id" : "THEME1" },
+  "id" : { "id" : "SUNDAY1" },
   "weekId" : { "id" : "2016-20" },
   "date" : 1473585712,
   "threads" : [ { "id" : "THREAD1" }, { "id" : "THREAD2" }, { "id" : "THREAD3" } ],
@@ -241,6 +151,7 @@ curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST
   "yearId" : { "id" : "2016" },
   "startDate" : 1472705712,
   "finishDate" : 1482705712,
+  "threads" : [ { "id" : "THREAD1" }, { "id" : "THREAD2" }, { "id" : "THREAD3" } ],
   "weave" : { "id" : "WEAVE1" },
   "laserDonut" : { "id" : "LD1" }
 }' http://localhost:9000/week/add
@@ -260,5 +171,29 @@ curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST
 curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
   "id" : { "id" : "2016" },
   "startDate" : 1472705712,
-  "finishDate" : 2482705712
+  "finishDate" : 2482705712,
+  "threads" : [ { "id" : "THREAD1" }, { "id" : "THREAD2" }, { "id" : "THREAD3" } ]
 }' http://localhost:9000/year/add
+
+
+
+
+
+curl "localhost:9000/backlogitem/get/BL1"
+curl "localhost:9000/bufferblock/get/BB1"
+curl "localhost:9000/concreteblock/get/CB1"
+curl "localhost:9000/financialtracking/get/FT1"
+curl "localhost:9000/goal/get/GOAL1"
+curl "localhost:9000/hobby/get/HOBBY1"
+curl "localhost:9000/laserdonut/get/LD1"
+curl "localhost:9000/portion/get/PORTION1"
+curl "localhost:9000/receipt/get/RECEIPT1"
+curl "localhost:9000/saturday/get/SATURDAY1"
+curl "localhost:9000/sunday/get/SUNDAY1"
+curl "localhost:9000/theme/get/THEME1"
+curl "localhost:9000/thread/get/THREAD1"
+curl "localhost:9000/todo/get/TODO1"
+curl "localhost:9000/weave/get/WEAVE1"
+curl "localhost:9000/week/get/WEEK1"
+curl "localhost:9000/weekday/get/MONDAY1"
+curl "localhost:9000/year/get/2016"

@@ -15,6 +15,7 @@ class Application extends Controller {
   }
 
   def add(spokeName: String) = Action { request =>
+    import GenericJsonConversions._
     val item = request.body.asJson.get
     SpokeType.withName(spokeName) match {
       case SpokeType.BacklogItem => Organiser.add(item.as[BacklogItem])
