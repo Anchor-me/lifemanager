@@ -130,7 +130,7 @@ package object neo4j {
           id = Id(row.get("id").get.asInstanceOf[String]),
           weekId = Id(row.get("weekId").get.asInstanceOf[String]),
           date = row.get("date").get.toString.toLong,
-          threads = row.get("threads").get.asInstanceOf[List[String]].map(item => Id(item)),
+          threads = row.get("threads").get.asInstanceOf[Seq[String]].map(id => Id(id)),
           portion = row.get("portion").map(item => Id(item.asInstanceOf[String])),
           passiveHobby = row.get("passiveHobby").map(item => Id(item.asInstanceOf[String])),
           financialTracking = row.get("financialTracking").map(item => Id(item.asInstanceOf[String]))
@@ -144,7 +144,7 @@ package object neo4j {
           id = Id(row.get("id").get.asInstanceOf[String]),
           weekId = Id(row.get("weekId").get.asInstanceOf[String]),
           date = row.get("date").get.toString.toLong,
-          threads = row.get("threads").map(result => getResultAsSeq(result.asInstanceOf[String])).getOrElse(Nil),
+          threads = row.get("threads").get.asInstanceOf[Seq[String]].map(id => Id(id)),
           activeHobby = row.get("activeHobby").map(item => Id(item.asInstanceOf[String])),
           financialTracking = row.get("financialTracking").map(item => Id(item.asInstanceOf[String]))
         )
@@ -214,7 +214,7 @@ package object neo4j {
           yearId = Id(row.get("yearId").get.asInstanceOf[String]),
           startDate = row.get("startDate").get.toString.toLong,
           finishDate = row.get("finishDate").get.toString.toLong,
-          threads = row.get("threads").map(result => getResultAsSeq(result.asInstanceOf[String])).getOrElse(Nil),
+          threads = row.get("threads").get.asInstanceOf[Seq[String]].map(id => Id(id)),
           weave = row.get("weave").map(item => Id(item.asInstanceOf[String])),
           laserDonut = row.get("laserDonut").map(item => Id(item.asInstanceOf[String]))
         )
@@ -227,7 +227,7 @@ package object neo4j {
           id = Id(row.get("id").get.asInstanceOf[String]),
           weekId = Id(row.get("weekId").get.asInstanceOf[String]),
           date = row.get("date").get.toString.toLong,
-          threads = row.get("threads").map(result => getResultAsSeq(result.asInstanceOf[String])).getOrElse(Nil),
+          threads = row.get("threads").get.asInstanceOf[Seq[String]].map(id => Id(id)),
           weave = row.get("weave").map(item => Id(item.asInstanceOf[String])),
           portion = row.get("portion").map(item => Id(item.asInstanceOf[String])),
           financialTracking = row.get("financialTracking").map(item => Id(item.asInstanceOf[String]))
@@ -244,10 +244,6 @@ package object neo4j {
           threads = row.get("threads").asInstanceOf[Seq[String]].map(id => Id(id))
         )
       }
-    }
-
-    private def getResultAsSeq(result: String): Seq[Id] = {
-      result.split(", ").map(id => Id(id))
     }
   }
 }

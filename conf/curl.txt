@@ -92,7 +92,7 @@ curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST
 
 curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
   "id" : { "id" : "SATURDAY1" },
-  "weekId" : { "id" : "2016-20" },
+  "weekId" : { "id" : "WEEK1" },
   "date" : 1472585712,
   "threads" : [ { "id" : "THREAD1" }, { "id" : "THREAD2" }, { "id" : "THREAD3" } ],
   "portion" : { "id" : "PORTION1" },
@@ -103,7 +103,7 @@ curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST
 
 curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
   "id" : { "id" : "SUNDAY1" },
-  "weekId" : { "id" : "2016-20" },
+  "weekId" : { "id" : "WEEK1" },
   "date" : 1473585712,
   "threads" : [ { "id" : "THREAD1" }, { "id" : "THREAD2" }, { "id" : "THREAD3" } ],
   "activeHobby" : { "id" : "HOBBY1" },
