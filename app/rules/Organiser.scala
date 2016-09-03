@@ -26,7 +26,7 @@ object Organiser {
 
   def add(financialTracking: FinancialTracking): Unit = {
     NeoService.add(financialTracking)
-    NeoService.connect(financialTracking.id.id, "is recorded during", financialTracking.yearId.id)
+    NeoService.connect(financialTracking.id.id, "is recorded during", financialTracking.dayId.id)
   }
 
   def add(goal: Goal): Unit = {

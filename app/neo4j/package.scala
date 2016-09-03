@@ -46,7 +46,7 @@ package object neo4j {
       resultRow match {
         case CypherRow(row: Map[String, Any]) => FinancialTracking(
           id = Id(row.get("id").get.asInstanceOf[String]),
-          yearId = Id(row.get("yearId").get.asInstanceOf[String]),
+          dayId = Id(row.get("dayId").get.asInstanceOf[String]),
           currentAmount = row.get("currentAmount").get.toString.toDouble,
           goalAmount = row.get("goalAmount").get.toString.toDouble,
           paidIn = row.get("paidIn").get.toString.toDouble,
