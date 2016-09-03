@@ -99,7 +99,7 @@ object Organiser {
     NeoService.add(week)
     NeoService.connect(week.id.id, "occurs in", week.yearId.id)
     week.threads.foreach(thread => NeoService.connect(week.id.id, "contains", thread.id))
-    week.weave.foreach(weave => NeoService.connect(week.id.id, "contains", weave.id))
+    week.weaves.foreach(weave => NeoService.connect(week.id.id, "contains", weave.id))
     week.laserDonut.foreach(laserDonut => NeoService.connect(week.id.id, "contains", laserDonut.id))
   }
 
@@ -107,7 +107,7 @@ object Organiser {
     NeoService.add(weekDay)
     NeoService.connect(weekDay.id.id, "occurs in", weekDay.weekId.id)
     weekDay.threads.foreach(thread => NeoService.connect(weekDay.id.id, "contains", thread.id))
-    weekDay.weave.foreach(weave => NeoService.connect(weekDay.id.id, "contains", weave.id))
+    weekDay.weaves.foreach(weave => NeoService.connect(weekDay.id.id, "contains", weave.id))
     weekDay.portion.foreach(portion => NeoService.connect(weekDay.id.id, "contains", portion.id))
   }
 

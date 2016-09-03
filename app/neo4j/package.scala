@@ -80,6 +80,7 @@ package object neo4j {
           summary = row.get("summary").get.asInstanceOf[String],
           description = row.get("description").get.asInstanceOf[String],
           typeOf = HobbyType.withName(row.get("typeOf").get.asInstanceOf[String]),
+          frequency = HobbyFrequency.withName(row.get("frequency").get.asInstanceOf[String]),
           status = StatusType.withName(row.get("status").get.asInstanceOf[String])
         )
       }
@@ -213,7 +214,7 @@ package object neo4j {
           startDate = row.get("startDate").get.toString.toLong,
           finishDate = row.get("finishDate").get.toString.toLong,
           threads = row.get("threads").get.asInstanceOf[Seq[String]].map(id => Id(id)),
-          weave = row.get("weave").map(item => Id(item.asInstanceOf[String])),
+          weaves = row.get("weaves").get.asInstanceOf[Seq[String]].map(id => Id(id)),
           laserDonut = row.get("laserDonut").map(item => Id(item.asInstanceOf[String]))
         )
       }
@@ -226,7 +227,7 @@ package object neo4j {
           weekId = Id(row.get("weekId").get.asInstanceOf[String]),
           date = row.get("date").get.toString.toLong,
           threads = row.get("threads").get.asInstanceOf[Seq[String]].map(id => Id(id)),
-          weave = row.get("weave").map(item => Id(item.asInstanceOf[String])),
+          weaves = row.get("weaves").get.asInstanceOf[Seq[String]].map(id => Id(id)),
           portion = row.get("portion").map(item => Id(item.asInstanceOf[String]))
         )
       }
