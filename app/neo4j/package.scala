@@ -76,7 +76,7 @@ package object neo4j {
       resultRow match {
         case CypherRow(row: Map[String, Any]) => Hobby(
           id = Id(row.get("id").get.asInstanceOf[String]),
-          goalId = Id(row.get("id").get.asInstanceOf[String]),
+          goalId = row.get("goalId").map(item => Id(item.asInstanceOf[String])),
           summary = row.get("summary").get.asInstanceOf[String],
           description = row.get("description").get.asInstanceOf[String],
           typeOf = HobbyType.withName(row.get("typeOf").get.asInstanceOf[String]),
@@ -165,7 +165,7 @@ package object neo4j {
           id = Id(row.get("id").get.asInstanceOf[String]),
           summary = row.get("summary").get.asInstanceOf[String],
           description = row.get("description").get.asInstanceOf[String],
-          goalId = Id(row.get("goalId").get.asInstanceOf[String]),
+          goalId = row.get("goalId").map(item => Id(item.asInstanceOf[String])),
           status = StatusType.withName(row.get("status").get.asInstanceOf[String])
         )
       }
@@ -198,7 +198,7 @@ package object neo4j {
           id = Id(row.get("id").get.asInstanceOf[String]),
           summary = row.get("summary").get.asInstanceOf[String],
           description = row.get("description").get.asInstanceOf[String],
-          goalId = Id(row.get("goalId").get.asInstanceOf[String]),
+          goalId = row.get("goalId").map(item => Id(item.asInstanceOf[String])),
           status = StatusType.withName(row.get("status").get.asInstanceOf[String]),
           typeOf = WeaveType.withName(row.get("typeOf").get.asInstanceOf[String])
         )

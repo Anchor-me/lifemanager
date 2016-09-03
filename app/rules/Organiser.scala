@@ -37,7 +37,7 @@ object Organiser {
 
   def add(hobby: Hobby): Unit = {
     NeoService.add(hobby)
-    NeoService.connect(hobby.id.id, "originates from", hobby.goalId.id)
+    hobby.goalId.foreach(goal => NeoService.connect(hobby.id.id, "originates from", goal.id))
   }
 
   def add(laserDonut: LaserDonut): Unit = {
@@ -77,7 +77,7 @@ object Organiser {
 
   def add(thread: Thread): Unit = {
     NeoService.add(thread)
-    NeoService.connect(thread.id.id, "originates from", thread.goalId.id)
+    thread.goalId.foreach(goal => NeoService.connect(thread.id.id, "originates from", goal.id))
   }
 
 //  def add(timeTable: TimeTable): Unit = {
@@ -92,7 +92,7 @@ object Organiser {
 
   def add(weave: Weave): Unit = {
     NeoService.add(weave)
-    NeoService.connect(weave.id.id, "originates from", weave.goalId.id)
+    weave.goalId.foreach(goal => NeoService.connect(weave.id.id, "originates from", goal.id))
   }
 
   def add(week: Week): Unit = {
