@@ -241,7 +241,7 @@ package object neo4j {
           id = Id(row.get("id").get.asInstanceOf[String]),
           startDate = row.get("startDate").get.toString.toLong,
           finishDate = row.get("finishDate").get.toString.toLong,
-          threads = row.get("threads").asInstanceOf[Seq[String]].map(id => Id(id))
+          threads = row.get("threads").get.asInstanceOf[Seq[String]].map(id => Id(id))
         )
       }
     }
