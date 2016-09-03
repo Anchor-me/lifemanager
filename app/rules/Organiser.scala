@@ -15,10 +15,13 @@ object Organiser {
 
   def add(bufferBlock: BufferBlock): Unit = {
     NeoService.add(bufferBlock)
+    bufferBlock.firstTask.foreach(task => NeoService.connect(bufferBlock.id.id, "firstly runs", task.id))
+    bufferBlock.secondTask.foreach(task => NeoService.connect(bufferBlock.id.id, "secondly runs", task.id))
   }
 
   def add(concreteBlock: ConcreteBlock): Unit = {
     NeoService.add(concreteBlock)
+    concreteBlock.task.foreach(task => NeoService.connect(concreteBlock.id.id, "only runs", task.id))
   }
 
   def add(financialTracking: FinancialTracking): Unit = {
@@ -28,8 +31,8 @@ object Organiser {
 
   def add(goal: Goal): Unit = {
     NeoService.add(goal)
-    goal.backlogItems.foreach(itemId => NeoService.connect(goal.id.id, "based on", itemId.id))
     NeoService.connect(goal.id.id, "has theme", goal.themeId.id)
+    goal.backlogItems.foreach(item => NeoService.connect(goal.id.id, "based on", item.id))
   }
 
   def add(hobby: Hobby): Unit = {
@@ -58,7 +61,6 @@ object Organiser {
     saturday.threads.foreach(thread => NeoService.connect(saturday.id.id, "contains", thread.id))
     saturday.portion.foreach(portion => NeoService.connect(saturday.id.id, "contains", portion.id))
     saturday.passiveHobby.foreach(hobby => NeoService.connect(saturday.id.id, "contains", hobby.id))
-    saturday.financialTracking.foreach(tracking => NeoService.connect(saturday.id.id, "contains", tracking.id))
   }
 
   def add(sunday: Sunday): Unit = {
@@ -66,7 +68,6 @@ object Organiser {
     NeoService.connect(sunday.id.id, "occurs in", sunday.weekId.id)
     sunday.threads.foreach(thread => NeoService.connect(sunday.id.id, "contains", thread.id))
     sunday.activeHobby.foreach(hobby => NeoService.connect(sunday.id.id, "contains", hobby.id))
-    sunday.financialTracking.foreach(tracking => NeoService.connect(sunday.id.id, "contains", tracking.id))
   }
 
   def add(theme: Theme): Unit = {
@@ -97,14 +98,21 @@ object Organiser {
   def add(week: Week): Unit = {
     NeoService.add(week)
     NeoService.connect(week.id.id, "occurs in", week.yearId.id)
+    week.threads.foreach(thread => NeoService.connect(week.id.id, "contains", thread.id))
+    week.weave.foreach(weave => NeoService.connect(week.id.id, "contains", weave.id))
+    week.laserDonut.foreach(laserDonut => NeoService.connect(week.id.id, "contains", laserDonut.id))
   }
 
   def add(weekDay: WeekDay): Unit = {
     NeoService.add(weekDay)
     NeoService.connect(weekDay.id.id, "occurs in", weekDay.weekId.id)
+    weekDay.threads.foreach(thread => NeoService.connect(weekDay.id.id, "contains", thread.id))
+    weekDay.weave.foreach(weave => NeoService.connect(weekDay.id.id, "contains", weave.id))
+    weekDay.portion.foreach(portion => NeoService.connect(weekDay.id.id, "contains", portion.id))
   }
 
   def add(year: Year): Unit = {
     NeoService.add(year)
+    year.threads.foreach(thread => NeoService.connect(year.id.id, "contains", thread.id))
   }
 }
