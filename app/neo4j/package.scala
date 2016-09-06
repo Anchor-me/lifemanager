@@ -181,14 +181,16 @@ package object neo4j {
       }
     }
 
-//    def asTimeTable: TimeTable = {
-//      resultRow match {
-//        case CypherRow(row: Map[String, Any]) => TimeTable(
-//          dayId = Id(row.get("dayId").get.asInstanceOf[String]),
-//          scheduledItems = row.get("scheduledItems").get.asInstanceOf[Seq[String]].map(id => Id(id))
-//        )
-//      }
-//    }
+    def asTimetable: Timetable = {
+      resultRow match {
+        case CypherRow(row: Map[String, Any]) => Timetable(
+          id = Id(row.get("id").get.asInstanceOf[String]),
+          dayId = Id(row.get("dayId").get.asInstanceOf[String]),
+          scheduledItems = row.get("scheduledItems").get.asInstanceOf[Seq[String]].map(id => Id(id)),
+          typeOf = TimetableType.withName(row.get("typeOf").get.asInstanceOf[String])
+        )
+      }
+    }
 
     def asToDo: ToDo = {
       resultRow match {

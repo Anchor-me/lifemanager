@@ -80,10 +80,11 @@ object Organiser {
     thread.goalId.foreach(goal => NeoService.connect(thread.id.id, "originates from", goal.id))
   }
 
-//  def add(timeTable: TimeTable): Unit = {
-//    NeoService.add(timeTable)
-//    NeoService.connect(timeTable.dayId.id)
-//  }
+  def add(timetable: Timetable): Unit = {
+    NeoService.add(timetable)
+    NeoService.connect(timetable.id.id, "is used during", timetable.dayId.id)
+    timetable.scheduledItems.foreach(item => NeoService.connect(timetable.id.id, "runs", item.id))
+  }
 
   def add(toDo: ToDo): Unit = {
     NeoService.add(toDo)

@@ -65,6 +65,7 @@ class Application extends Controller {
             case SpokeType.Sunday => Json.toJson(item.asSunday)
             case SpokeType.Theme => Json.toJson(item.asTheme)
             case SpokeType.Thread => Json.toJson(item.asThread)
+            case SpokeType.Timetable => Json.toJson(item.asTimetable)
             case SpokeType.ToDo => Json.toJson(item.asToDo)
             case SpokeType.Weave => Json.toJson(item.asWeave)
             case SpokeType.Week => Json.toJson(item.asWeek)
