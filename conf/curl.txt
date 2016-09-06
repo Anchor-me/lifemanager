@@ -27,6 +27,12 @@ curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST
 
 
 curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
+  "id" : { "id" : "EPOCH1" },
+  "name" : "Messinaissance"
+}' http://localhost:9000/epoch/add
+
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
   "id" : { "id" : "FT1" },
   "yearId" : { "id" : "2016" },
   "currentAmount" : 2000,
@@ -182,6 +188,7 @@ curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST
 curl "localhost:9000/backlogitem/get/BL1"
 curl "localhost:9000/bufferblock/get/BB1"
 curl "localhost:9000/concreteblock/get/CB1"
+curl "localhost:9000/epoch/get/EPOCH1"
 curl "localhost:9000/financialtracking/get/FT1"
 curl "localhost:9000/goal/get/GOAL1"
 curl "localhost:9000/hobby/get/HOBBY1"

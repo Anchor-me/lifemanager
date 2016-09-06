@@ -54,6 +54,7 @@ class Application extends Controller {
             case SpokeType.BacklogItem => Json.toJson(item.asBacklogItem)
             case SpokeType.BufferBlock => Json.toJson(item.asBufferBlock)
             case SpokeType.ConcreteBlock => Json.toJson(item.asConcreteBlock)
+            case SpokeType.Epoch => Json.toJson(item.asEpoch)
             case SpokeType.FinancialTracking => Json.toJson(item.asFinancialTracking)
             case SpokeType.Goal => Json.toJson(item.asGoal)
             case SpokeType.Hobby => Json.toJson(item.asHobby)

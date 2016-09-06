@@ -57,7 +57,7 @@ object Organiser {
 
   def add(saturday: Saturday): Unit = {
     NeoService.add(saturday)
-    NeoService.connect(saturday.id.id, "occurs in", saturday.weekId.id)
+    NeoService.connect(saturday.id.id, "occurs during", saturday.weekId.id)
     saturday.threads.foreach(thread => NeoService.connect(saturday.id.id, "contains", thread.id))
     saturday.portion.foreach(portion => NeoService.connect(saturday.id.id, "contains", portion.id))
     saturday.passiveHobby.foreach(hobby => NeoService.connect(saturday.id.id, "contains", hobby.id))
@@ -105,7 +105,7 @@ object Organiser {
 
   def add(weekDay: WeekDay): Unit = {
     NeoService.add(weekDay)
-    NeoService.connect(weekDay.id.id, "occurs in", weekDay.weekId.id)
+    NeoService.connect(weekDay.id.id, "occurs during", weekDay.weekId.id)
     weekDay.threads.foreach(thread => NeoService.connect(weekDay.id.id, "contains", thread.id))
     weekDay.weaves.foreach(weave => NeoService.connect(weekDay.id.id, "contains", weave.id))
     weekDay.portion.foreach(portion => NeoService.connect(weekDay.id.id, "contains", portion.id))
@@ -113,6 +113,7 @@ object Organiser {
 
   def add(year: Year): Unit = {
     NeoService.add(year)
+    NeoService.connect(year.id.id, "occurs during", year.epochId.id)
     year.threads.foreach(thread => NeoService.connect(year.id.id, "contains", thread.id))
   }
 }

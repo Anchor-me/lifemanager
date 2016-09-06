@@ -42,6 +42,15 @@ package object neo4j {
       }
     }
 
+    def asEpoch: Epoch = {
+      resultRow match {
+        case CypherRow(row: Map[String, Any]) => Epoch(
+          id = Id(row.get("id").get.asInstanceOf[String]),
+          name = row.get("id").get.asInstanceOf[String]
+        )
+      }
+    }
+
     def asFinancialTracking: FinancialTracking = {
       resultRow match {
         case CypherRow(row: Map[String, Any]) => FinancialTracking(
@@ -237,6 +246,7 @@ package object neo4j {
       resultRow match {
         case CypherRow(row: Map[String, Any]) => Year(
           id = Id(row.get("id").get.asInstanceOf[String]),
+          epochId = Id(row.get("epochId").get.asInstanceOf[String]),
           startDate = row.get("startDate").get.toString.toLong,
           finishDate = row.get("finishDate").get.toString.toLong,
           threads = row.get("threads").get.asInstanceOf[Seq[String]].map(id => Id(id))
