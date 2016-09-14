@@ -21,6 +21,7 @@ class Application extends Controller {
       case SpokeType.BacklogItem => Organiser.add(item.as[BacklogItem])
       case SpokeType.BufferBlock => Organiser.add(item.as[BufferBlock])
       case SpokeType.ConcreteBlock => Organiser.add(item.as[ConcreteBlock])
+      case SpokeType.Epoch => Organiser.add(item.as[Epoch])
       case SpokeType.FinancialTracking => Organiser.add(item.as[FinancialTracking])
       case SpokeType.Goal => Organiser.add(item.as[Goal])
       case SpokeType.Hobby => Organiser.add(item.as[Hobby])

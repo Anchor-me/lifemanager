@@ -24,6 +24,10 @@ object Organiser {
     concreteBlock.task.foreach(task => NeoService.connect(concreteBlock.id.id, "only runs", task.id))
   }
 
+  def add(epoch: Epoch): Unit = {
+    NeoService.add(epoch)
+  }
+
   def add(financialTracking: FinancialTracking): Unit = {
     NeoService.add(financialTracking)
     NeoService.connect(financialTracking.id.id, "is recorded during", financialTracking.dayId.id)
