@@ -17,10 +17,14 @@ object NeoService {
   implicit val executionContext = scala.concurrent.ExecutionContext.global
 
   def add(spoke: Spoke): Unit = {
-    Cypher (
-      s"""
-       |CREATE ${spoke.toCypher}
+    val query = s"""
+                   |CREATE ${spoke.toCypher}
       """.stripMargin
+
+    println(query + "\n")
+
+    Cypher (
+      query
     )()
   }
 
