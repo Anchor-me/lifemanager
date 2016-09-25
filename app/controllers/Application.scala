@@ -4,9 +4,9 @@ import com.anchor.model._
 import neo4j._
 import play.api.libs.json.{JsValue, Json}
 import com.anchor.json._
+import db.DatabaseLayer
 import neo4j.NeoService
 import play.api.mvc.{Action, Controller}
-import rules.Organiser
 
 class Application extends Controller {
 
@@ -18,25 +18,25 @@ class Application extends Controller {
     import GenericJsonConversions._
     val item = request.body.asJson.get
     SpokeType.withName(spokeName) match {
-      case SpokeType.BacklogItem => Organiser.add(item.as[BacklogItem])
-      case SpokeType.BufferBlock => Organiser.add(item.as[BufferBlock])
-      case SpokeType.ConcreteBlock => Organiser.add(item.as[ConcreteBlock])
-      case SpokeType.Epoch => Organiser.add(item.as[Epoch])
-      case SpokeType.FinancialTracking => Organiser.add(item.as[FinancialTracking])
-      case SpokeType.Goal => Organiser.add(item.as[Goal])
-      case SpokeType.Hobby => Organiser.add(item.as[Hobby])
-      case SpokeType.LaserDonut => Organiser.add(item.as[LaserDonut])
-      case SpokeType.Portion => Organiser.add(item.as[Portion])
-      case SpokeType.Receipt => Organiser.add(item.as[Receipt])
-      case SpokeType.Saturday => Organiser.add(item.as[Saturday])
-      case SpokeType.Sunday => Organiser.add(item.as[Sunday])
-      case SpokeType.Theme => Organiser.add(item.as[Theme])
-      case SpokeType.Thread => Organiser.add(item.as[Thread])
-      case SpokeType.ToDo => Organiser.add(item.as[ToDo])
-      case SpokeType.Weave => Organiser.add(item.as[Weave])
-      case SpokeType.Week => Organiser.add(item.as[Week])
-      case SpokeType.WeekDay => Organiser.add(item.as[WeekDay])
-      case SpokeType.Year => Organiser.add(item.as[Year])
+      case SpokeType.BacklogItem => DatabaseLayer.add(item.as[BacklogItem])
+      case SpokeType.BufferBlock => DatabaseLayer.add(item.as[BufferBlock])
+      case SpokeType.ConcreteBlock => DatabaseLayer.add(item.as[ConcreteBlock])
+      case SpokeType.Epoch => DatabaseLayer.add(item.as[Epoch])
+      case SpokeType.FinancialTracking => DatabaseLayer.add(item.as[FinancialTracking])
+      case SpokeType.Goal => DatabaseLayer.add(item.as[Goal])
+      case SpokeType.Hobby => DatabaseLayer.add(item.as[Hobby])
+      case SpokeType.LaserDonut => DatabaseLayer.add(item.as[LaserDonut])
+      case SpokeType.Portion => DatabaseLayer.add(item.as[Portion])
+      case SpokeType.Receipt => DatabaseLayer.add(item.as[Receipt])
+      case SpokeType.Saturday => DatabaseLayer.add(item.as[Saturday])
+      case SpokeType.Sunday => DatabaseLayer.add(item.as[Sunday])
+      case SpokeType.Theme => DatabaseLayer.add(item.as[Theme])
+      case SpokeType.Thread => DatabaseLayer.add(item.as[Thread])
+      case SpokeType.ToDo => DatabaseLayer.add(item.as[ToDo])
+      case SpokeType.Weave => DatabaseLayer.add(item.as[Weave])
+      case SpokeType.Week => DatabaseLayer.add(item.as[Week])
+      case SpokeType.WeekDay => DatabaseLayer.add(item.as[WeekDay])
+      case SpokeType.Year => DatabaseLayer.add(item.as[Year])
     }
     Ok
   }
