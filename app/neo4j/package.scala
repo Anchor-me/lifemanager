@@ -19,34 +19,13 @@ package object neo4j {
       }
     }
 
-    def asBufferBlock: BufferBlock = {
-      resultRow match {
-        case CypherRow(row: Map[String, Any]) => BufferBlock(
-          id = Id(row.get("id").get.asInstanceOf[String]),
-          start = row.get("start").get.toString.toLong,
-          finish = row.get("finish").get.toString.toLong,
-          firstTask = row.get("firstTask").map(item => Id(item.asInstanceOf[String])),
-          secondTask = row.get("secondTask").map(item => Id(item.asInstanceOf[String]))
-        )
-      }
-    }
-
-    def asConcreteBlock: ConcreteBlock = {
-      resultRow match {
-        case CypherRow(row: Map[String, Any]) => ConcreteBlock(
-          id = Id(row.get("id").get.asInstanceOf[String]),
-          start = row.get("start").get.toString.toLong,
-          finish = row.get("finish").get.toString.toLong,
-          task = row.get("task").map(item => Id(item.asInstanceOf[String]))
-        )
-      }
-    }
-
     def asEpoch: Epoch = {
       resultRow match {
         case CypherRow(row: Map[String, Any]) => Epoch(
           id = Id(row.get("id").get.asInstanceOf[String]),
-          name = row.get("id").get.asInstanceOf[String]
+          name = row.get("id").get.asInstanceOf[String],
+          totem = row.get("totem").get.asInstanceOf[String],
+          question = row.get("question").get.asInstanceOf[String]
         )
       }
     }
@@ -134,31 +113,6 @@ package object neo4j {
       }
     }
 
-    def asSaturday: Saturday = {
-      resultRow match {
-        case CypherRow(row: Map[String, Any]) => Saturday(
-          id = Id(row.get("id").get.asInstanceOf[String]),
-          weekId = Id(row.get("weekId").get.asInstanceOf[String]),
-          date = row.get("date").get.toString.toLong,
-          threads = row.get("threads").get.asInstanceOf[Seq[String]].map(id => Id(id)),
-          portion = row.get("portion").map(item => Id(item.asInstanceOf[String])),
-          passiveHobby = row.get("passiveHobby").map(item => Id(item.asInstanceOf[String]))
-        )
-      }
-    }
-
-    def asSunday: Sunday = {
-      resultRow match {
-        case CypherRow(row: Map[String, Any]) => Sunday(
-          id = Id(row.get("id").get.asInstanceOf[String]),
-          weekId = Id(row.get("weekId").get.asInstanceOf[String]),
-          date = row.get("date").get.toString.toLong,
-          threads = row.get("threads").get.asInstanceOf[Seq[String]].map(id => Id(id)),
-          activeHobby = row.get("activeHobby").map(item => Id(item.asInstanceOf[String]))
-        )
-      }
-    }
-
     def asTheme: Theme = {
       resultRow match {
         case CypherRow(row: Map[String, Any]) => Theme(
@@ -177,17 +131,6 @@ package object neo4j {
           description = row.get("description").get.asInstanceOf[String],
           goalId = row.get("goalId").map(item => Id(item.asInstanceOf[String])),
           status = StatusType.withName(row.get("status").get.asInstanceOf[String])
-        )
-      }
-    }
-
-    def asTimetable: Timetable = {
-      resultRow match {
-        case CypherRow(row: Map[String, Any]) => Timetable(
-          id = Id(row.get("id").get.asInstanceOf[String]),
-          dayId = Id(row.get("dayId").get.asInstanceOf[String]),
-          scheduledItems = row.get("scheduledItems").get.asInstanceOf[Seq[String]].map(id => Id(id)),
-          typeOf = TimetableType.withName(row.get("typeOf").get.asInstanceOf[String])
         )
       }
     }
@@ -217,41 +160,13 @@ package object neo4j {
       }
     }
 
-    def asWeek: Week = {
-      resultRow match {
-        case CypherRow(row: Map[String, Any]) => Week(
-          id = Id(row.get("id").get.asInstanceOf[String]),
-          yearId = Id(row.get("yearId").get.asInstanceOf[String]),
-          startDate = row.get("startDate").get.toString.toLong,
-          finishDate = row.get("finishDate").get.toString.toLong,
-          threads = row.get("threads").get.asInstanceOf[Seq[String]].map(id => Id(id)),
-          weaves = row.get("weaves").get.asInstanceOf[Seq[String]].map(id => Id(id)),
-          laserDonut = row.get("laserDonut").map(item => Id(item.asInstanceOf[String]))
-        )
-      }
-    }
-
-    def asWeekDay: WeekDay = {
-      resultRow match {
-        case CypherRow(row: Map[String, Any]) => WeekDay(
-          id = Id(row.get("id").get.asInstanceOf[String]),
-          weekId = Id(row.get("weekId").get.asInstanceOf[String]),
-          date = row.get("date").get.toString.toLong,
-          threads = row.get("threads").get.asInstanceOf[Seq[String]].map(id => Id(id)),
-          weaves = row.get("weaves").get.asInstanceOf[Seq[String]].map(id => Id(id)),
-          portion = row.get("portion").map(item => Id(item.asInstanceOf[String]))
-        )
-      }
-    }
-
     def asYear: Year = {
       resultRow match {
         case CypherRow(row: Map[String, Any]) => Year(
           id = Id(row.get("id").get.asInstanceOf[String]),
           epochId = Id(row.get("epochId").get.asInstanceOf[String]),
-          startDate = row.get("startDate").get.toString.toLong,
-          finishDate = row.get("finishDate").get.toString.toLong,
-          threads = row.get("threads").get.asInstanceOf[Seq[String]].map(id => Id(id))
+          startDate = DateTime.fromString(row.get("startDate").get.toString),
+          finishDate = DateTime.fromString(row.get("finishDate").get.toString)
         )
       }
     }
