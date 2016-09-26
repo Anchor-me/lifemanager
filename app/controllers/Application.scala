@@ -55,7 +55,6 @@ class Application extends Controller {
             case SpokeType.Receipt => Json.toJson(item.asReceipt)
             case SpokeType.Theme => Json.toJson(item.asTheme)
             case SpokeType.Thread => Json.toJson(item.asThread)
-            case SpokeType.Timetable => Json.toJson(item.asTimetable)
             case SpokeType.ToDo => Json.toJson(item.asToDo)
             case SpokeType.Weave => Json.toJson(item.asWeave)
             case SpokeType.Year => Json.toJson(item.asYear)
