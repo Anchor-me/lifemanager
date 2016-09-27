@@ -1,12 +1,62 @@
 {
   "routines": [
     {
+      "id": "ROUTINE1",
       "name": "Lean month",
       "timetables": [
         {
-
+          "date": {
+            "year": 2016,
+            "month": 9,
+            "day": 28
+          }
         }
       ]
     }
   ]
 }
+
+/*
+
+Routine (
+  id: Id,
+  name: String,
+  timetables: Seq[Timetable]
+)
+
+Timetable (
+  date: DateTime,
+  scheduledItems: Seq[ScheduledItem],
+  typeOf: TimetableType.Value
+)
+
+DateTime (
+  year: Int,
+  month: Int,
+  day: Int,
+  hours: Int,
+  minutes: Int,
+  seconds: Int
+)
+
+BufferBlock (
+  start: DateTime,
+  finish: DateTime,
+  firstTask: Option[ScheduledTask],
+  secondTask: Option[ScheduledTask]
+)
+
+ConcreteBlock (
+  start: DateTime,
+  finish: DateTime,
+  task: Option[ScheduledTask]
+)
+
+ScheduledTask (
+  taskId: Id,
+  name: String,
+  taskType: TaskType.Value,
+  statusType: StatusType.Value
+)
+
+*/
