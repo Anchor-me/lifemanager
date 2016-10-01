@@ -19,7 +19,8 @@ libraryDependencies ++= Seq(
   ws,
   specs2 % Test,
   "org.anormcypher" %% "anormcypher" % "0.9.1",
-  "com.anchor" %% "anchor-models" % "1.0"
+  "com.anchor" %% "anchor-models" % "1.0" % Test,
+  "org.scalatest" %% "scalatest" % "3.0.0" % "test"
 )
 
 // Play provides two styles of routers, one expects its actions to be injected, the

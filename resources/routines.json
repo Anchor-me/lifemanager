@@ -589,7 +589,7 @@
           "statusType": "Complete"
         }
       }],
-      "typeOf": "Weekdays"
+      "typeOf": "Weekends"
     }],
     "isCurrent": true
   },
@@ -1183,7 +1183,7 @@
             "statusType": "Complete"
           }
         }],
-        "typeOf": "Weekdays"
+        "typeOf": "Weekends"
       }],
       "isCurrent": false
     }]

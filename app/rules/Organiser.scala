@@ -1,9 +1,8 @@
 package rules
 
 import com.anchor.model._
+import com.anchor.model.TimetableType._
 import db.DatabaseLayer
-import java.sql.Date
-import java.time.DayOfWeek._
 import java.time._
 
 /**
@@ -11,8 +10,8 @@ import java.time._
   */
 object Organiser {
 
-  val Weekdays = Seq(MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY)
-  val Weekends = Seq(SATURDAY, SUNDAY)
+  val WeekdaysSeq = Seq(Monday, Tuesday, Wednesday, Thursday, Friday, Weekdays, Daily)
+  val WeekendsSeq = Seq(Saturday, Sunday, Weekends, Daily)
 
   def getTimetable(dateTime: DateTime): Option[Timetable] = {
     getCurrentRoutine.map(getAppropriateTimetable(_, dateTime)).getOrElse(None)
@@ -28,7 +27,7 @@ object Organiser {
     if (timetable.date.nonEmpty && timetable.date.get == dateTime) {
       (0, timetable)
     }
-    else if (timetable.typeOf == getDayOfWeek(dateTime)) {
+    else if (timetable.typeOf.id == getDayOfWeek(dateTime)) {
       (1, timetable)
     }
     else if (
@@ -46,24 +45,30 @@ object Organiser {
     DatabaseLayer.getRoutines.filter(_.isCurrent).headOption
   }
 
-  def getDayOfWeek(dateTime: DateTime): DayOfWeek = {
-    val localDate: LocalDate = Instant.ofEpochMilli(dateTime.toMillis).atZone(ZoneId.systemDefault).toLocalDate
-    localDate.getDayOfWeek
+  def getDayOfWeek(dateTime: DateTime): Int = {
+    new org.joda.time.DateTime (
+      dateTime.year,
+      dateTime.month,
+      dateTime.day,
+      dateTime.hours,
+      dateTime.minutes,
+      dateTime.seconds
+    ).dayOfWeek.get
   }
 
   def isWeekday(dateTime: DateTime): Boolean = {
-    Weekdays.map(_.getValue).contains(getDayOfWeek(dateTime).getValue)
+    WeekdaysSeq.map(_.id).contains(getDayOfWeek(dateTime))
   }
 
   def isWeekend(dateTime: DateTime): Boolean = {
-    Weekends.map(_.getValue).contains(getDayOfWeek(dateTime).getValue)
+    WeekendsSeq.map(_.id).contains(getDayOfWeek(dateTime))
   }
 
   def fallsOnWeekday(timetable: Timetable): Boolean = {
-    Weekdays.map(_.getValue).contains(timetable.typeOf.id)
+    WeekdaysSeq.map(_.id).contains(timetable.typeOf.id)
   }
 
   def fallsOnWeekend(timetable: Timetable): Boolean = {
-    Weekends.map(_.getValue).contains(timetable.typeOf.id)
+    WeekendsSeq.map(_.id).contains(timetable.typeOf.id)
   }
 }
