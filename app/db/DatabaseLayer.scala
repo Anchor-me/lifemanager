@@ -1,6 +1,7 @@
 package db
 
 import com.anchor.model._
+import db.jsondb.JsonService
 import neo4j.NeoService
 
 /**
@@ -71,5 +72,9 @@ object DatabaseLayer {
   def add(year: Year): Unit = {
     NeoService.add(year)
     NeoService.connect(year.id.id, "occurs during", year.epochId.id)
+  }
+
+  def getRoutines: Seq[Routine] = {
+    JsonService.getRoutines
   }
 }

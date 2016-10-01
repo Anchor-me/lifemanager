@@ -33,6 +33,8 @@ GET     /todo/get/:id                               controllers.Application.get(
 GET     /weave/get/:id                              controllers.Application.get(id, spokeName: String = "Weave")
 GET     /year/get/:id                               controllers.Application.get(id, spokeName: String = "Year")
 
+GET     /timetable/today                            controllers.Application.getTimetable
+
 GET     /connect/:id1/:relationship/:id2            controllers.Application.connect(id1, relationship, id2)
 
 GET     /delete/:id                                 controllers.Application.delete(id)

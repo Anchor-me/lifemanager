@@ -1,12 +1,13 @@
 package controllers
 
 import com.anchor.model._
-import neo4j._
+import db.neo4j.NeoConversions._
 import play.api.libs.json.{JsValue, Json}
 import com.anchor.json._
 import db.DatabaseLayer
-import neo4j.NeoService
+import db.neo4j.NeoService
 import play.api.mvc.{Action, Controller}
+import rules.Organiser
 
 class Application extends Controller {
 
@@ -62,6 +63,14 @@ class Application extends Controller {
         }
         Ok(answer + "\n")
       }
+    }
+  }
+
+  def getTimetable = Action {
+    val now = org.joda.time.DateTime.now.getMillis
+    Organiser.getTimetable(DateTime.fromMillis(now)) match {
+      case None => NotFound
+      case Some(timetable) => Ok(Json.prettyPrint(Json.toJson(timetable)) + "\n")
     }
   }
 

@@ -1,10 +1,12 @@
+package db.neo4j
+
 import com.anchor.model._
 import org.anormcypher.{CypherResultRow, CypherRow}
 
 /**
- * Created by mesfinmebrate on 15/07/2016.
- */
-package object neo4j {
+  * Created by mesfinmebrate on 15/07/2016.
+  */
+object NeoConversions {
 
   implicit class RowWrapper(resultRow: CypherResultRow) {
     def asBacklogItem: BacklogItem = {
