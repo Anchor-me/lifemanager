@@ -1,62 +1,1190 @@
 {
-  "routines": [
-    {
-      "id": "ROUTINE1",
-      "name": "Lean month",
-      "timetables": [
-        {
-          "date": {
-            "year": 2016,
-            "month": 9,
-            "day": 28
-          }
+  "routines": [{
+    "id": {
+      "id": "ROUTINE1"
+    },
+    "name": "Lean month",
+    "timetables": [{
+      "scheduledItems": [{
+        "start": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 6,
+          "minutes": 0,
+          "seconds": 0
+        },
+        "finish": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 6,
+          "minutes": 10,
+          "seconds": 0
+        },
+        "task": {
+          "taskId": {
+            "id": "THREAD1"
+          },
+          "name": "Wake up",
+          "taskType": "Thread",
+          "statusType": "Complete"
         }
-      ]
-    }
-  ]
+      }, {
+        "start": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 6,
+          "minutes": 10,
+          "seconds": 0
+        },
+        "finish": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 6,
+          "minutes": 20,
+          "seconds": 0
+        },
+        "firstTask": {
+          "taskId": {
+            "id": "THREAD1"
+          },
+          "name": "Wake up",
+          "taskType": "Thread",
+          "statusType": "Complete"
+        },
+        "secondTask": {
+          "taskId": {
+            "id": "THREAD2"
+          },
+          "name": "Go for a run",
+          "taskType": "Thread",
+          "statusType": "Complete"
+        }
+      }, {
+        "start": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 6,
+          "minutes": 20,
+          "seconds": 0
+        },
+        "finish": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 7,
+          "minutes": 20,
+          "seconds": 0
+        },
+        "task": {
+          "taskId": {
+            "id": "THREAD2"
+          },
+          "name": "Go for a run",
+          "taskType": "Thread",
+          "statusType": "Complete"
+        }
+      }, {
+        "start": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 7,
+          "minutes": 20,
+          "seconds": 0
+        },
+        "finish": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 7,
+          "minutes": 30,
+          "seconds": 0
+        },
+        "firstTask": {
+          "taskId": {
+            "id": "THREAD2"
+          },
+          "name": "Go for a run",
+          "taskType": "Thread",
+          "statusType": "Complete"
+        },
+        "secondTask": {
+          "taskId": {
+            "id": "THREAD3"
+          },
+          "name": "Take a shower",
+          "taskType": "Thread",
+          "statusType": "Complete"
+        }
+      }, {
+        "start": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 7,
+          "minutes": 30,
+          "seconds": 0
+        },
+        "finish": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 8,
+          "minutes": 0,
+          "seconds": 0
+        },
+        "task": {
+          "taskId": {
+            "id": "THREAD3"
+          },
+          "name": "Take a shower",
+          "taskType": "Thread",
+          "statusType": "Complete"
+        }
+      }, {
+        "start": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 8,
+          "minutes": 0,
+          "seconds": 0
+        },
+        "finish": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 8,
+          "minutes": 20,
+          "seconds": 0
+        },
+        "firstTask": {
+          "taskId": {
+            "id": "THREAD3"
+          },
+          "name": "Take a shower",
+          "taskType": "Thread",
+          "statusType": "Complete"
+        },
+        "secondTask": {
+          "taskId": {
+            "id": "THREAD7"
+          },
+          "name": "Commute to work",
+          "taskType": "Thread",
+          "statusType": "Complete"
+        }
+      }, {
+        "start": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 8,
+          "minutes": 20,
+          "seconds": 0
+        },
+        "finish": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 9,
+          "minutes": 10,
+          "seconds": 0
+        },
+        "task": {
+          "taskId": {
+            "id": "THREAD7"
+          },
+          "name": "Commute to work",
+          "taskType": "Thread",
+          "statusType": "Complete"
+        }
+      }, {
+        "start": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 9,
+          "minutes": 10,
+          "seconds": 0
+        },
+        "finish": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 9,
+          "minutes": 20,
+          "seconds": 0
+        },
+        "firstTask": {
+          "taskId": {
+            "id": "THREAD7"
+          },
+          "name": "Commute to work",
+          "taskType": "Thread",
+          "statusType": "Complete"
+        },
+        "secondTask": {
+          "taskId": {
+            "id": "WEAVEPLACEHOLDER"
+          },
+          "name": "Placeholder for a Weave",
+          "taskType": "Weave",
+          "statusType": "NotStarted"
+        }
+      }, {
+        "start": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 9,
+          "minutes": 20,
+          "seconds": 0
+        },
+        "finish": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 16,
+          "minutes": 0,
+          "seconds": 0
+        },
+        "task": {
+          "taskId": {
+            "id": "WEAVEPLACEHOLDER"
+          },
+          "name": "Placeholder for a Weave",
+          "taskType": "Weave",
+          "statusType": "NotStarted"
+        }
+      }, {
+        "start": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 16,
+          "minutes": 0,
+          "seconds": 0
+        },
+        "finish": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 16,
+          "minutes": 30,
+          "seconds": 0
+        },
+        "firstTask": {
+          "taskId": {
+            "id": "WEAVEPLACEHOLDER"
+          },
+          "name": "Placeholder for a Weave",
+          "taskType": "Weave",
+          "statusType": "NotStarted"
+        },
+        "secondTask": {
+          "taskId": {
+            "id": "WEAVEPLACEHOLDER"
+          },
+          "name": "Placeholder for a Weave",
+          "taskType": "Weave",
+          "statusType": "NotStarted"
+        }
+      }, {
+        "start": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 16,
+          "minutes": 30,
+          "seconds": 0
+        },
+        "finish": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 20,
+          "minutes": 30,
+          "seconds": 0
+        },
+        "task": {
+          "taskId": {
+            "id": "LDPLACEHOLDER"
+          },
+          "name": "Placeholder for a Laser Donut Portion",
+          "taskType": "LaserDonutPortion",
+          "statusType": "NotStarted"
+        }
+      }, {
+        "start": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 20,
+          "minutes": 30,
+          "seconds": 0
+        },
+        "finish": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 21,
+          "minutes": 20,
+          "seconds": 0
+        },
+        "firstTask": {
+          "taskId": {
+            "id": "LDPLACEHOLDER"
+          },
+          "name": "Placeholder for a Laser Donut Portion",
+          "taskType": "LaserDonutPortion",
+          "statusType": "NotStarted"
+        },
+        "secondTask": {
+          "taskId": {
+            "id": "THREAD4"
+          },
+          "name": "Sleep",
+          "taskType": "Thread",
+          "statusType": "Complete"
+        }
+      }],
+      "typeOf": "Daily"
+    }, {
+      "scheduledItems": [{
+        "start": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 6,
+          "minutes": 0,
+          "seconds": 0
+        },
+        "finish": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 6,
+          "minutes": 10,
+          "seconds": 0
+        },
+        "task": {
+          "taskId": {
+            "id": "THREAD1"
+          },
+          "name": "Wake up",
+          "taskType": "Thread",
+          "statusType": "Complete"
+        }
+      }, {
+        "start": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 6,
+          "minutes": 10,
+          "seconds": 0
+        },
+        "finish": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 6,
+          "minutes": 20,
+          "seconds": 0
+        },
+        "firstTask": {
+          "taskId": {
+            "id": "THREAD1"
+          },
+          "name": "Wake up",
+          "taskType": "Thread",
+          "statusType": "Complete"
+        },
+        "secondTask": {
+          "taskId": {
+            "id": "THREAD2"
+          },
+          "name": "Go for a run",
+          "taskType": "Thread",
+          "statusType": "Complete"
+        }
+      }, {
+        "start": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 6,
+          "minutes": 20,
+          "seconds": 0
+        },
+        "finish": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 7,
+          "minutes": 20,
+          "seconds": 0
+        },
+        "task": {
+          "taskId": {
+            "id": "THREAD2"
+          },
+          "name": "Go for a run",
+          "taskType": "Thread",
+          "statusType": "Complete"
+        }
+      }, {
+        "start": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 7,
+          "minutes": 20,
+          "seconds": 0
+        },
+        "finish": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 7,
+          "minutes": 30,
+          "seconds": 0
+        },
+        "firstTask": {
+          "taskId": {
+            "id": "THREAD2"
+          },
+          "name": "Go for a run",
+          "taskType": "Thread",
+          "statusType": "Complete"
+        },
+        "secondTask": {
+          "taskId": {
+            "id": "THREAD3"
+          },
+          "name": "Take a shower",
+          "taskType": "Thread",
+          "statusType": "Complete"
+        }
+      }, {
+        "start": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 7,
+          "minutes": 30,
+          "seconds": 0
+        },
+        "finish": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 8,
+          "minutes": 0,
+          "seconds": 0
+        },
+        "task": {
+          "taskId": {
+            "id": "THREAD3"
+          },
+          "name": "Take a shower",
+          "taskType": "Thread",
+          "statusType": "Complete"
+        }
+      }, {
+        "start": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 8,
+          "minutes": 20,
+          "seconds": 0
+        },
+        "finish": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 9,
+          "minutes": 10,
+          "seconds": 0
+        },
+        "firstTask": {
+          "taskId": {
+            "id": "THREAD3"
+          },
+          "name": "Take a shower",
+          "taskType": "Thread",
+          "statusType": "Complete"
+        },
+        "secondTask": {
+          "taskId": {
+            "id": "LDPLACEHOLDER"
+          },
+          "name": "Commute to library",
+          "taskType": "Thread",
+          "statusType": "Complete"
+        }
+      }, {
+        "start": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 9,
+          "minutes": 10,
+          "seconds": 0
+        },
+        "finish": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 20,
+          "minutes": 30,
+          "seconds": 0
+        },
+        "task": {
+          "taskId": {
+            "id": "LDPLACEHOLDER"
+          },
+          "name": "Placeholder for a Laser Donut Portion",
+          "taskType": "LaserDonutPortion",
+          "statusType": "NotStarted"
+        }
+      }, {
+        "start": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 20,
+          "minutes": 30,
+          "seconds": 0
+        },
+        "finish": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hours": 21,
+          "minutes": 20,
+          "seconds": 0
+        },
+        "firstTask": {
+          "taskId": {
+            "id": "LDPLACEHOLDER"
+          },
+          "name": "Placeholder for a Laser Donut Portion",
+          "taskType": "LaserDonutPortion",
+          "statusType": "NotStarted"
+        },
+        "secondTask": {
+          "taskId": {
+            "id": "THREAD4"
+          },
+          "name": "Sleep",
+          "taskType": "Thread",
+          "statusType": "Complete"
+        }
+      }],
+      "typeOf": "WeekDays"
+    }],
+    "isCurrent": true
+  },
+    {
+      "id": {
+        "id": "ROUTINE2"
+      },
+      "name": "Normalcy",
+      "timetables": [{
+        "scheduledItems": [{
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 6,
+            "minutes": 0,
+            "seconds": 0
+          },
+          "finish": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 6,
+            "minutes": 10,
+            "seconds": 0
+          },
+          "task": {
+            "taskId": {
+              "id": "THREAD1"
+            },
+            "name": "Wake up",
+            "taskType": "Thread",
+            "statusType": "Complete"
+          }
+        }, {
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 6,
+            "minutes": 10,
+            "seconds": 0
+          },
+          "finish": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 6,
+            "minutes": 20,
+            "seconds": 0
+          },
+          "firstTask": {
+            "taskId": {
+              "id": "THREAD1"
+            },
+            "name": "Wake up",
+            "taskType": "Thread",
+            "statusType": "Complete"
+          },
+          "secondTask": {
+            "taskId": {
+              "id": "THREAD2"
+            },
+            "name": "Go for a run",
+            "taskType": "Thread",
+            "statusType": "Complete"
+          }
+        }, {
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 6,
+            "minutes": 20,
+            "seconds": 0
+          },
+          "finish": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 7,
+            "minutes": 20,
+            "seconds": 0
+          },
+          "task": {
+            "taskId": {
+              "id": "THREAD2"
+            },
+            "name": "Go for a run",
+            "taskType": "Thread",
+            "statusType": "Complete"
+          }
+        }, {
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 7,
+            "minutes": 20,
+            "seconds": 0
+          },
+          "finish": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 7,
+            "minutes": 30,
+            "seconds": 0
+          },
+          "firstTask": {
+            "taskId": {
+              "id": "THREAD2"
+            },
+            "name": "Go for a run",
+            "taskType": "Thread",
+            "statusType": "Complete"
+          },
+          "secondTask": {
+            "taskId": {
+              "id": "THREAD3"
+            },
+            "name": "Take a shower",
+            "taskType": "Thread",
+            "statusType": "Complete"
+          }
+        }, {
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 7,
+            "minutes": 30,
+            "seconds": 0
+          },
+          "finish": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 8,
+            "minutes": 0,
+            "seconds": 0
+          },
+          "task": {
+            "taskId": {
+              "id": "THREAD3"
+            },
+            "name": "Take a shower",
+            "taskType": "Thread",
+            "statusType": "Complete"
+          }
+        }, {
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 8,
+            "minutes": 0,
+            "seconds": 0
+          },
+          "finish": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 8,
+            "minutes": 20,
+            "seconds": 0
+          },
+          "firstTask": {
+            "taskId": {
+              "id": "THREAD3"
+            },
+            "name": "Take a shower",
+            "taskType": "Thread",
+            "statusType": "Complete"
+          },
+          "secondTask": {
+            "taskId": {
+              "id": "THREAD7"
+            },
+            "name": "Commute to work",
+            "taskType": "Thread",
+            "statusType": "Complete"
+          }
+        }, {
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 8,
+            "minutes": 20,
+            "seconds": 0
+          },
+          "finish": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 9,
+            "minutes": 10,
+            "seconds": 0
+          },
+          "task": {
+            "taskId": {
+              "id": "THREAD7"
+            },
+            "name": "Commute to work",
+            "taskType": "Thread",
+            "statusType": "Complete"
+          }
+        }, {
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 9,
+            "minutes": 10,
+            "seconds": 0
+          },
+          "finish": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 9,
+            "minutes": 20,
+            "seconds": 0
+          },
+          "firstTask": {
+            "taskId": {
+              "id": "THREAD7"
+            },
+            "name": "Commute to work",
+            "taskType": "Thread",
+            "statusType": "Complete"
+          },
+          "secondTask": {
+            "taskId": {
+              "id": "WEAVEPLACEHOLDER"
+            },
+            "name": "Placeholder for a Weave",
+            "taskType": "Weave",
+            "statusType": "NotStarted"
+          }
+        }, {
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 9,
+            "minutes": 20,
+            "seconds": 0
+          },
+          "finish": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 16,
+            "minutes": 0,
+            "seconds": 0
+          },
+          "task": {
+            "taskId": {
+              "id": "WEAVEPLACEHOLDER"
+            },
+            "name": "Placeholder for a Weave",
+            "taskType": "Weave",
+            "statusType": "NotStarted"
+          }
+        }, {
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 16,
+            "minutes": 0,
+            "seconds": 0
+          },
+          "finish": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 16,
+            "minutes": 30,
+            "seconds": 0
+          },
+          "firstTask": {
+            "taskId": {
+              "id": "WEAVEPLACEHOLDER"
+            },
+            "name": "Placeholder for a Weave",
+            "taskType": "Weave",
+            "statusType": "NotStarted"
+          },
+          "secondTask": {
+            "taskId": {
+              "id": "WEAVEPLACEHOLDER"
+            },
+            "name": "Placeholder for a Weave",
+            "taskType": "Weave",
+            "statusType": "NotStarted"
+          }
+        }, {
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 16,
+            "minutes": 30,
+            "seconds": 0
+          },
+          "finish": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 20,
+            "minutes": 30,
+            "seconds": 0
+          },
+          "task": {
+            "taskId": {
+              "id": "LDPLACEHOLDER"
+            },
+            "name": "Placeholder for a Laser Donut Portion",
+            "taskType": "LaserDonutPortion",
+            "statusType": "NotStarted"
+          }
+        }, {
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 20,
+            "minutes": 30,
+            "seconds": 0
+          },
+          "finish": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 21,
+            "minutes": 20,
+            "seconds": 0
+          },
+          "firstTask": {
+            "taskId": {
+              "id": "LDPLACEHOLDER"
+            },
+            "name": "Placeholder for a Laser Donut Portion",
+            "taskType": "LaserDonutPortion",
+            "statusType": "NotStarted"
+          },
+          "secondTask": {
+            "taskId": {
+              "id": "THREAD4"
+            },
+            "name": "Sleep",
+            "taskType": "Thread",
+            "statusType": "Complete"
+          }
+        }],
+        "typeOf": "Daily"
+      }, {
+        "scheduledItems": [{
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 6,
+            "minutes": 0,
+            "seconds": 0
+          },
+          "finish": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 6,
+            "minutes": 10,
+            "seconds": 0
+          },
+          "task": {
+            "taskId": {
+              "id": "THREAD1"
+            },
+            "name": "Wake up",
+            "taskType": "Thread",
+            "statusType": "Complete"
+          }
+        }, {
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 6,
+            "minutes": 10,
+            "seconds": 0
+          },
+          "finish": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 6,
+            "minutes": 20,
+            "seconds": 0
+          },
+          "firstTask": {
+            "taskId": {
+              "id": "THREAD1"
+            },
+            "name": "Wake up",
+            "taskType": "Thread",
+            "statusType": "Complete"
+          },
+          "secondTask": {
+            "taskId": {
+              "id": "THREAD2"
+            },
+            "name": "Go for a run",
+            "taskType": "Thread",
+            "statusType": "Complete"
+          }
+        }, {
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 6,
+            "minutes": 20,
+            "seconds": 0
+          },
+          "finish": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 7,
+            "minutes": 20,
+            "seconds": 0
+          },
+          "task": {
+            "taskId": {
+              "id": "THREAD2"
+            },
+            "name": "Go for a run",
+            "taskType": "Thread",
+            "statusType": "Complete"
+          }
+        }, {
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 7,
+            "minutes": 20,
+            "seconds": 0
+          },
+          "finish": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 7,
+            "minutes": 30,
+            "seconds": 0
+          },
+          "firstTask": {
+            "taskId": {
+              "id": "THREAD2"
+            },
+            "name": "Go for a run",
+            "taskType": "Thread",
+            "statusType": "Complete"
+          },
+          "secondTask": {
+            "taskId": {
+              "id": "THREAD3"
+            },
+            "name": "Take a shower",
+            "taskType": "Thread",
+            "statusType": "Complete"
+          }
+        }, {
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 7,
+            "minutes": 30,
+            "seconds": 0
+          },
+          "finish": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 8,
+            "minutes": 0,
+            "seconds": 0
+          },
+          "task": {
+            "taskId": {
+              "id": "THREAD3"
+            },
+            "name": "Take a shower",
+            "taskType": "Thread",
+            "statusType": "Complete"
+          }
+        }, {
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 8,
+            "minutes": 20,
+            "seconds": 0
+          },
+          "finish": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 9,
+            "minutes": 10,
+            "seconds": 0
+          },
+          "firstTask": {
+            "taskId": {
+              "id": "THREAD3"
+            },
+            "name": "Take a shower",
+            "taskType": "Thread",
+            "statusType": "Complete"
+          },
+          "secondTask": {
+            "taskId": {
+              "id": "LDPLACEHOLDER"
+            },
+            "name": "Commute to library",
+            "taskType": "Thread",
+            "statusType": "Complete"
+          }
+        }, {
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 9,
+            "minutes": 10,
+            "seconds": 0
+          },
+          "finish": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 20,
+            "minutes": 30,
+            "seconds": 0
+          },
+          "task": {
+            "taskId": {
+              "id": "LDPLACEHOLDER"
+            },
+            "name": "Placeholder for a Laser Donut Portion",
+            "taskType": "LaserDonutPortion",
+            "statusType": "NotStarted"
+          }
+        }, {
+          "start": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 20,
+            "minutes": 30,
+            "seconds": 0
+          },
+          "finish": {
+            "year": 0,
+            "month": 0,
+            "day": 0,
+            "hours": 21,
+            "minutes": 20,
+            "seconds": 0
+          },
+          "firstTask": {
+            "taskId": {
+              "id": "LDPLACEHOLDER"
+            },
+            "name": "Placeholder for a Laser Donut Portion",
+            "taskType": "LaserDonutPortion",
+            "statusType": "NotStarted"
+          },
+          "secondTask": {
+            "taskId": {
+              "id": "THREAD4"
+            },
+            "name": "Sleep",
+            "taskType": "Thread",
+            "statusType": "Complete"
+          }
+        }],
+        "typeOf": "WeekDays"
+      }],
+      "isCurrent": false
+    }]
 }
-
-/*
-
-Routine (
-  id: Id,
-  name: String,
-  timetables: Seq[Timetable]
-)
-
-Timetable (
-  date: DateTime,
-  scheduledItems: Seq[ScheduledItem],
-  typeOf: TimetableType.Value
-)
-
-DateTime (
-  year: Int,
-  month: Int,
-  day: Int,
-  hours: Int,
-  minutes: Int,
-  seconds: Int
-)
-
-BufferBlock (
-  start: DateTime,
-  finish: DateTime,
-  firstTask: Option[ScheduledTask],
-  secondTask: Option[ScheduledTask]
-)
-
-ConcreteBlock (
-  start: DateTime,
-  finish: DateTime,
-  task: Option[ScheduledTask]
-)
-
-ScheduledTask (
-  taskId: Id,
-  name: String,
-  taskType: TaskType.Value,
-  statusType: StatusType.Value
-)
-
-*/
