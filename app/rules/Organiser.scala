@@ -10,11 +10,15 @@ import java.time._
   */
 object Organiser {
 
-  val WeekdaysSeq = Seq(Monday, Tuesday, Wednesday, Thursday, Friday, Weekdays, Daily)
-  val WeekendsSeq = Seq(Saturday, Sunday, Weekends, Daily)
+  val WeekdaysSeq = Seq(Monday, Tuesday, Wednesday, Thursday, Friday, Weekdays)
+  val WeekendsSeq = Seq(Saturday, Sunday, Weekends)
 
-  def getTimetable(dateTime: DateTime): Option[Timetable] = {
-    getCurrentRoutine.map(getAppropriateTimetable(_, dateTime)).getOrElse(None)
+  def getTimetable(routines: Seq[Routine], dateTime: DateTime): Option[Timetable] = {
+    getCurrentRoutine(routines).map(getAppropriateTimetable(_, dateTime)).getOrElse(None)
+  }
+
+  def getCurrentRoutine(routines: Seq[Routine]): Option[Routine] = {
+    routines.filter(_.isCurrent).headOption
   }
 
   def getAppropriateTimetable(routine: Routine, dateTime: DateTime): Option[Timetable] = {
@@ -24,7 +28,7 @@ object Organiser {
   }
 
   def labelImportance(timetable: Timetable, dateTime: DateTime): (Int, Timetable) = {
-    if (timetable.date.nonEmpty && timetable.date.get == dateTime) {
+    if (timetable.date.nonEmpty && timetable.date.get.withoutTime == dateTime.withoutTime) {
       (0, timetable)
     }
     else if (timetable.typeOf.id == getDayOfWeek(dateTime)) {
@@ -36,13 +40,12 @@ object Organiser {
     ) {
       (2, timetable)
     }
+    else if (timetable.typeOf == TimetableType.Daily) {
+      (3, timetable)
+    }
     else {
       (1000, timetable)
     }
-  }
-
-  def getCurrentRoutine: Option[Routine] = {
-    DatabaseLayer.getRoutines.filter(_.isCurrent).headOption
   }
 
   def getDayOfWeek(dateTime: DateTime): Int = {

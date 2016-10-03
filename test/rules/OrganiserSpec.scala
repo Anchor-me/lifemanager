@@ -41,11 +41,36 @@ class OrganiserSpec extends FlatSpec with Matchers {
     typeOf = TimetableType.Daily
   )
 
-  val routine = Routine(
-    Seq(TodayTimetable, MondayTimetable, WeekdayTimetable, WeekendTimetable, DailyTimetable)
+  val routine1 = Routine(
+    id = Id("ROUTINE1"),
+    name = "Lean month",
+    timetables = Seq(TodayTimetable, MondayTimetable, WeekdayTimetable, WeekendTimetable, DailyTimetable),
+    isCurrent = true
+  )
+
+  val routine2 = Routine(
+    id = Id("ROUTINE2"),
+    name = "Normalcy",
+    timetables = Nil,
+    isCurrent = false
+  )
+
+  val routines = Seq(routine2, routine1)
+
+  "getTimetable" should "work" in {
+    getTimetable(routines, Monday) should be (Some(MondayTimetable))
+    getTimetable(routines, Saturday) should be (Some(WeekendTimetable))
+    getTimetable(routines, Today) should be (Some(TodayTimetable))
+  }
+
+  "getCurrentTimetable" should "work" in {
+    getCurrentRoutine(routines) should be (Some(routine1))
+  }
 
   "getAppropriateTimetable" should "work" in {
-
+    getAppropriateTimetable(routine1, Monday) should be (Some(MondayTimetable))
+    getAppropriateTimetable(routine1, Saturday) should be (Some(WeekendTimetable))
+    getAppropriateTimetable(routine1, Today) should be (Some(TodayTimetable))
   }
 
   "labelImportance" should "work" in {

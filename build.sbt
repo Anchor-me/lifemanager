@@ -19,7 +19,7 @@ libraryDependencies ++= Seq(
   ws,
   specs2 % Test,
   "org.anormcypher" %% "anormcypher" % "0.9.1",
-  "com.anchor" %% "anchor-models" % "1.0" % Test,
+  "com.anchor" %% "anchor-models" % "1.0",
   "org.scalatest" %% "scalatest" % "3.0.0" % "test"
 )
 

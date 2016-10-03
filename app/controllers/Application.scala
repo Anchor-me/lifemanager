@@ -5,9 +5,12 @@ import db.neo4j.NeoConversions._
 import play.api.libs.json.{JsValue, Json}
 import com.anchor.json._
 import db.DatabaseLayer
+import db.jsondb.JsonConfiguration._
 import db.neo4j.NeoService
 import play.api.mvc.{Action, Controller}
 import rules.Organiser
+
+import scala.io.Source
 
 class Application extends Controller {
 
@@ -67,11 +70,16 @@ class Application extends Controller {
   }
 
   def getTimetable = Action {
-    val now = org.joda.time.DateTime.now.getMillis
-    Organiser.getTimetable(DateTime.fromMillis(now)) match {
+    //val now = org.joda.time.DateTime.now.getMillis
+    val now = 1475287000000L
+    Organiser.getTimetable(DatabaseLayer.getRoutines, DateTime.fromMillis(now)) match {
       case None => NotFound
       case Some(timetable) => Ok(Json.prettyPrint(Json.toJson(timetable)) + "\n")
     }
+  }
+
+  def getRoutines = Action {
+    Ok(Source.fromFile(address).getLines.mkString)
   }
 
   def delete(id: String) = Action {

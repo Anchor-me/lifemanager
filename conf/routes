@@ -34,6 +34,7 @@ GET     /weave/get/:id                              controllers.Application.get(
 GET     /year/get/:id                               controllers.Application.get(id, spokeName: String = "Year")
 
 GET     /timetable/today                            controllers.Application.getTimetable
+GET     /routines                                   controllers.Application.getRoutines
 
 GET     /connect/:id1/:relationship/:id2            controllers.Application.connect(id1, relationship, id2)
 
