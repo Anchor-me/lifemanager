@@ -7,6 +7,7 @@ import com.anchor.json._
 import db.DatabaseLayer
 import db.jsondb.JsonConfiguration._
 import db.neo4j.NeoService
+import play.api.libs.Jsonp
 import play.api.mvc.{Action, Controller}
 import rules.Organiser
 
@@ -74,7 +75,10 @@ class Application extends Controller {
     val now = 1475287000000L
     Organiser.getTimetable(DatabaseLayer.getRoutines, DateTime.fromMillis(now)) match {
       case None => NotFound
-      case Some(timetable) => Ok(Json.prettyPrint(Json.toJson(timetable)) + "\n")
+      case Some(timetable) => {
+        val result = Json.toJson(timetable)
+        Ok(Jsonp(padding = "callback", json = result))
+      }
     }
   }
 
