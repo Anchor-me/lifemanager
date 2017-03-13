@@ -1,4 +1,4 @@
-name := "play-scala"
+name := "lifemanager"
 
 version := "1.0-SNAPSHOT"
 
