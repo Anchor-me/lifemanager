@@ -1,6 +1,6 @@
 Cyphers
 
-MATCH (n) DETACH DELETE n (delete everything)
+MATCH (n) DETACH DELETE n    // delete everything
 
 
 
@@ -34,7 +34,9 @@ curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST
 
 curl -v -H "Accept: application/json" -H "Content-type: application/json" -XPOST -d '{
   "id" : { "id" : "EPOCH1" },
-  "name" : "Messinaissance"
+  "name" : "Messinaissance",
+  "totem": "Hero",
+  "question": "Am I capable of becoming an Übermensch?"
 }' http://localhost:9000/epoch/add
 
 
